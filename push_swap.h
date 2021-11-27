@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:03 by iyamada           #+#    #+#             */
-/*   Updated: 2021/11/27 00:44:49 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/11/27 19:28:33 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void		ft_swap_helper(t_bilist *stack, int index_1, int index_2);
 void	ft_rotate(t_bilist *stack);
 void	ft_reverse_rotate(t_bilist *stack);
 void	ft_delete_stack(t_bilist *stack);
-int	ft_get_median_from_bilist(t_bilist *stack_a);
+int	ft_get_median_from_bilist(t_bilist *stack_a, int upper_limit);
 void	ft_print_stack(t_bilist *stack);
 void	ft_print_sepline(void);
 void	ft_print_stacks(t_bilist *stack_a, t_bilist *stack_b);

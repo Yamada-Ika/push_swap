@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 15:56:54 by iyamada           #+#    #+#             */
-/*   Updated: 2021/11/27 00:45:44 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/11/27 19:29:35 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,27 +207,51 @@ int		ft_get_bilist_element(t_bilist *stack)
 	return (element_count);
 }
 
-int	ft_get_median_from_bilist(t_bilist *stack_a)
+void	ft_sort(int *array, int size)
+{
+	int	is_swap;
+	int	tmp;
+
+	while (1)
+	{
+		is_swap = 0;
+		for (int i = 0; i < size - 1; i++) {
+			if (array[i] < array[i+1])
+			{
+				tmp = array[i];
+				array[i] = array[i+1];
+				array[i+1] = tmp;
+				is_swap = 1;
+			}
+		}
+		if (is_swap == 0)
+			break ;
+	}
+}
+
+int	ft_get_median_from_bilist(t_bilist *stack_a, int upper_limit)
 {
 	t_bilist	*sentinel_node;
 	int			median;
 	int			element_count;
 	int			median_index;
 	int			i;
+	int			*array;
 
-	element_count = ft_get_bilist_element(stack_a);
-	median_index = element_count / 2;
-	printf("median_index : %d\n", median_index);
+	// element_count = ft_get_bilist_element(stack_a);
+	array = (int *)malloc(sizeof(int) * upper_limit);
+	median_index = upper_limit / 2;
 	i = 0;
-	median = stack_a->front->value;
-	while (i < median_index)
+	while (i < upper_limit)
 	{
-		stack_a = stack_a->front;
+		stack_a = stack_a->back;
 		if (stack_a == sentinel_node)
 			break ;
-		median = stack_a->value;
+		array[i] = stack_a->value;
 		i++;
 	}
+	ft_sort(array, upper_limit);
+	median = array[median_index];
 	return (median);
 }
 
