@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:03 by iyamada           #+#    #+#             */
-/*   Updated: 2021/11/27 19:28:33 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/11/30 16:05:29 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,8 @@ int	ft_get_sorted_bilist_num(t_bilist *bilist);
 int		ft_get_bilist_element(t_bilist *stack);
 void	ft_pb_minimum_element(t_bilist *stack_a, t_bilist *stack_b);
 void	ft_pa_minimum_element(t_bilist *stack_a, t_bilist *stack_b);
+
+void	ft_send_half_to_b(t_bilist *stack_a, t_bilist *stack_b, int stack_a_size, int flg);
+void	ft_send_half_to_a(t_bilist *stack_a, t_bilist *stack_b, int stack_a_size);
 
 #endif

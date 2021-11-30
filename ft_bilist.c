@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 15:56:54 by iyamada           #+#    #+#             */
-/*   Updated: 2021/11/30 01:08:28 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/11/30 16:01:15 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,6 +244,7 @@ int	ft_get_median_from_bilist(t_bilist *stack_a, int upper_limit)
 	array = (int *)malloc(sizeof(int) * upper_limit);
 	median_index = upper_limit / 2;
 	i = 0;
+	sentinel_node = stack_a;
 	while (i < upper_limit)
 	{
 		stack_a = stack_a->back;

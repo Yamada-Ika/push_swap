@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:06 by iyamada           #+#    #+#             */
-/*   Updated: 2021/11/30 01:09:29 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/11/30 16:04:54 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,21 +74,79 @@ void	ft_five(t_bilist *stack_a, t_bilist *stack_b)
 	ft_pa(stack_a, stack_b);
 }
 
-void	ft_quick_sort(t_bilist *stack_a, t_bilist *stack_b, int pivot, int stack_size)
+void	ft_send_half_to_a(t_bilist *stack_a, t_bilist *stack_b, int stack_b_size)
+{
+	int	i;
+	int	stack_a_size;
+	int	pivot;
+	int	b_size_after_pa;
+
+	// ft_print_stacks(stack_a, stack_b);
+	if (stack_b_size <= 20)
+	{
+		i = 0;
+		while (i < stack_b_size) // aの末尾にソート済み配列をくっつける
+		{
+			ft_pa_minimum_element(stack_a, stack_b);
+			ft_ra(stack_a);
+			i++;
+		}
+		return ;
+	}
+	i = 0;
+	stack_a_size = 0;
+	pivot = ft_get_median_from_bilist(stack_b, stack_b_size);
+	while (i < stack_b_size)
+	{
+		if (stack_b->back->value > pivot)
+		{
+			ft_pa(stack_a, stack_b);
+			stack_a_size++;
+		}
+		else
+		{
+			ft_rb(stack_b);
+		}
+		i++;
+	}
+	b_size_after_pa = stack_b_size - stack_a_size;
+	ft_send_half_to_a(stack_a, stack_b, b_size_after_pa);
+	i = 0;
+	while (i < stack_a_size)
+	{
+		ft_pb(stack_a, stack_b);
+		i++;
+	}
+	ft_send_half_to_a(stack_a, stack_b, stack_a_size);
+}
+
+void	ft_send_half_to_b(t_bilist *stack_a, t_bilist *stack_b, int stack_a_size, int flg)
 {
 	int	i;
 	int	stack_b_size;
+	int	pivot;
+	int	a_size_left;
 	int	ra_count;
 
-	if (stack_size == 1)
+	// ft_print_stacks(stack_a, stack_b);
+	if (stack_a_size <= 2)
 	{
-		ft_ra(stack_a);
+		if (stack_a_size == 1)
+			ft_ra(stack_a);
+		if (stack_a_size == 2)
+		{
+			if (stack_a->back->value > stack_a->back->back->value)
+				ft_sa(stack_a);
+			ft_ra(stack_a);
+			ft_ra(stack_a);
+		}
 		return ;
 	}
 	i = 0;
 	stack_b_size = 0;
 	ra_count = 0;
-	while (i < stack_size)
+	pivot = ft_get_median_from_bilist(stack_a, stack_a_size);
+	while (i < stack_a_size)
 	{
 		if (stack_a->back->value <= pivot)
 		{
@@ -102,30 +160,22 @@ void	ft_quick_sort(t_bilist *stack_a, t_bilist *stack_b, int pivot, int stack_si
 		}
 		i++;
 	}
-	while (ra_count > 0)
+	while (ra_count > 0 && flg)
 	{
 		ft_rra(stack_a);
 		ra_count--;
 	}
-	pivot = ft_get_median_from_bilist(stack_a, stack_size);
-	i = 0;
-	while (i < stack_b_size) // aの末尾にソート済み配列をくっつける
-	{
-		ft_pa_minimum_element(stack_a, stack_b);
-		ft_ra(stack_a);
-		i++;
-	}
-	ft_quick_sort(stack_a, stack_b, pivot, stack_size - stack_b_size);
+	ft_send_half_to_a(stack_a, stack_b, stack_b_size);
+	a_size_left = stack_a_size - stack_b_size;
+	ft_send_half_to_b(stack_a, stack_b, a_size_left, 1);
 }
 
 void	ft_bigger(t_bilist *stack_a, t_bilist *stack_b)
 {
-	int	pivot;
 	int	stack_a_size;
 
 	stack_a_size = ft_get_bilist_element(stack_a);
-	pivot = ft_get_median_from_bilist(stack_a, stack_a_size);	
-	ft_quick_sort(stack_a, stack_b, pivot, stack_a_size);
+	ft_send_half_to_b(stack_a, stack_b, stack_a_size, 0);
 }
 
 void	push_swap(t_bilist *stack_a, t_bilist *stack_b)
