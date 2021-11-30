@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 15:56:54 by iyamada           #+#    #+#             */
-/*   Updated: 2021/11/27 19:29:35 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/11/30 01:08:28 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,16 @@ t_bilist	*ft_create_stack(int	*array, size_t size)
 	new_stack = ft_new_bilist_sentinel();
 	if (array == NULL || new_stack == NULL)
 		return (new_stack);
-	i = 0;
-	while (i < size)
+	i = size - 1;
+	while (i >= 0)
 	{
 		new_node = ft_new_bilist(array[i]);
 		if (new_node == NULL)
 			return (NULL);
 		ft_add_bilist(new_stack, new_node);
-		i++;
+		if (i == 0)
+			break ;
+		i--;
 	}
 	return (new_stack);
 }

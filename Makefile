@@ -1,5 +1,5 @@
 CC			:= gcc
-CFLAGS		:= #-Wall -Wextra -Werror
+CFLAGS		:= -g -fsanitize=address #-Wall -Wextra -Werror
 
 NAME 		:= push_swap
 SRCS		:= push_swap.c ft_bilist.c
