@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:06 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/02 11:34:01 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/02 16:39:13 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,42 @@ void	ft_five(t_bilist *stack_a, t_bilist *stack_b)
 void	ft_join_sorted_b_to_end_a(t_bilist *stack_a, t_bilist *stack_b, int stack_b_size)
 {
 	int	i;
+	int	j;
+	int	tmp_b_size;
+	int	min_value = ft_get_minimum_value_from_stack(stack_b);
+	int	next_min_value;
+	bool	is_min_value_in_stack_b;
 
+	tmp_b_size = stack_b_size;
 	i = 0;
 	while (i < stack_b_size)
 	{
-		ft_pa_minimum_element(stack_a, stack_b);
+		// ft_print_stacks(stack_a, stack_b);
+		// ft_pa_minimum_element(stack_a, stack_b);
+		// printf("min_value : %d\n", min_value);
+		is_min_value_in_stack_b = ft_is_value_in_stack(stack_b, min_value);
+		// printf("is_min_value_in_stack_b : %d\n", is_min_value_in_stack_b);
+		next_min_value = min_value + 1;
+		j = 0;
+		while (j < tmp_b_size && is_min_value_in_stack_b)
+		{
+			if (min_value == stack_b->back->value)
+			{
+				ft_pa(stack_a, stack_b);
+				break ;
+			}
+			if (stack_a->back->value > stack_b->back->value)
+			{
+				ft_pa(stack_a, stack_b);
+				tmp_b_size--;
+			}
+			else
+			{
+				ft_rb(stack_b);
+				j++;
+			}
+		}
+		min_value = next_min_value;
 		ft_ra(stack_a);
 		i++;
 	}
@@ -170,7 +201,7 @@ void	push_swap(t_bilist *stack_a, t_bilist *stack_b)
 		ft_five(stack_a, stack_b);
 	else
 		ft_bigger(stack_a, stack_b);
-	// ft_print_stacks(stack_a, stack_b);
+	ft_print_stacks(stack_a, stack_b);
 }
 
 int	main(int argc, char *argv[])

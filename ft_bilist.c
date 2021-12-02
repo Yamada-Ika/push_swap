@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 15:56:54 by iyamada           #+#    #+#             */
-/*   Updated: 2021/11/30 16:01:15 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/02 16:38:45 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -299,6 +299,44 @@ void	ft_rrb(t_bilist *stack_b)
 {
 	printf("rrb\n");
 	ft_reverse_rotate(stack_b);
+}
+
+bool	ft_is_value_in_stack(t_bilist *stack, int val)
+{
+	t_bilist	*sentinel;
+
+	sentinel = stack;
+	while (1)
+	{
+		stack = stack->back;
+		if (stack == sentinel)
+			return (false);
+		if (stack->value == val)
+			return (true);
+	}
+}
+
+int	ft_get_minimum_value_from_stack(t_bilist *bilist)
+{
+	int	index;
+	int	minimum_value;
+	t_bilist	*sentinel;
+
+	sentinel = bilist;
+	index = 0;
+	minimum_value = INT_MAX;
+	while (1)
+	{
+		bilist = bilist->back;
+		if (bilist == sentinel)
+			break ;
+		if (minimum_value > bilist->value)
+		{
+			minimum_value = bilist->value;
+		}
+		index++;
+	}
+	return (minimum_value);
 }
 
 int	ft_get_minimum_value_index_from_bilist(t_bilist *bilist)

@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:03 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/02 02:34:24 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/02 16:31:15 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int	ft_get_sorted_bilist_num(t_bilist *bilist);
 int		ft_get_bilist_element(t_bilist *stack);
 void	ft_pb_minimum_element(t_bilist *stack_a, t_bilist *stack_b);
 void	ft_pa_minimum_element(t_bilist *stack_a, t_bilist *stack_b);
+bool	ft_is_value_in_stack(t_bilist *stack, int val);
+int	ft_get_minimum_value_from_stack(t_bilist *bilist);
 
 void	ft_send_half_to_b(t_bilist *stack_a, t_bilist *stack_b, int stack_a_size, int flg);
 void	ft_send_half_to_a(t_bilist *stack_a, t_bilist *stack_b, int stack_a_size);
