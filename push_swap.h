@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:03 by iyamada           #+#    #+#             */
-/*   Updated: 2021/11/30 16:05:29 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/02 02:34:24 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ typedef struct s_bilist
 	struct	s_bilist	*front;
 	struct	s_bilist	*back;
 }	t_bilist;
+
+// argument
+int		ft_is_arg_correct(int argc, char *argv[]);
+int		*ft_get_intarray_from_arg(int argc, char *argv[]);
+void	ft_array_compress(int *array, int size);
 
 void	ft_sa(t_bilist *stack_a);
 void	ft_pa(t_bilist *stack_a, t_bilist *stack_b);

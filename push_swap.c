@@ -6,37 +6,11 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:06 by iyamada           #+#    #+#             */
-/*   Updated: 2021/11/30 16:04:54 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/02 11:34:01 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_is_arg_correct(int argc, char *argv[])
-{
-	if (argc < 2)
-		return (0);
-	return (1);
-}
-
-int	*ft_get_intarray_from_arg(int argc, char *argv[])
-{
-	size_t	array_size;
-	size_t	i;
-	int		*array;
-
-	array_size = (size_t)argc - 1;
-	array = (int *)malloc(array_size * sizeof(int));
-	if (array == NULL)
-		return (NULL);
-	i = 0;
-	while (i < array_size)
-	{
-		array[i] = atoi(argv[i + 1]);
-		i++;
-	}
-	return (array);
-}
 
 void	ft_three(t_bilist *stack_a)
 {
@@ -74,6 +48,19 @@ void	ft_five(t_bilist *stack_a, t_bilist *stack_b)
 	ft_pa(stack_a, stack_b);
 }
 
+void	ft_join_sorted_b_to_end_a(t_bilist *stack_a, t_bilist *stack_b, int stack_b_size)
+{
+	int	i;
+
+	i = 0;
+	while (i < stack_b_size)
+	{
+		ft_pa_minimum_element(stack_a, stack_b);
+		ft_ra(stack_a);
+		i++;
+	}
+}
+
 void	ft_send_half_to_a(t_bilist *stack_a, t_bilist *stack_b, int stack_b_size)
 {
 	int	i;
@@ -81,16 +68,9 @@ void	ft_send_half_to_a(t_bilist *stack_a, t_bilist *stack_b, int stack_b_size)
 	int	pivot;
 	int	b_size_after_pa;
 
-	// ft_print_stacks(stack_a, stack_b);
 	if (stack_b_size <= 20)
 	{
-		i = 0;
-		while (i < stack_b_size) // aの末尾にソート済み配列をくっつける
-		{
-			ft_pa_minimum_element(stack_a, stack_b);
-			ft_ra(stack_a);
-			i++;
-		}
+		ft_join_sorted_b_to_end_a(stack_a, stack_b, stack_b_size);
 		return ;
 	}
 	i = 0;
@@ -128,7 +108,6 @@ void	ft_send_half_to_b(t_bilist *stack_a, t_bilist *stack_b, int stack_a_size, i
 	int	a_size_left;
 	int	ra_count;
 
-	// ft_print_stacks(stack_a, stack_b);
 	if (stack_a_size <= 2)
 	{
 		if (stack_a_size == 1)
@@ -213,6 +192,7 @@ int	main(int argc, char *argv[])
 		return (-1);
 	}
 	array_size = (size_t)argc - 1;
+	ft_array_compress(array, array_size);
 	stack_a = ft_create_stack(array, array_size);
 	stack_b = ft_create_stack(NULL, 0);
 	push_swap(stack_a, stack_b);
