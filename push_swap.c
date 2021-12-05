@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:06 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/05 22:33:47 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/05 23:00:54 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,10 @@ void	ft_join_sorted_b_to_end_a(t_bilist *stack_a, t_bilist *stack_b, int stack_b
 void	ft_send_half_to_a(t_bilist *stack_a, t_bilist *stack_b, int stack_b_min_val, int stack_b_max_val)
 {
 	int	i;
-	int	stack_a_size;
+	int	pa_count;
 	int	pivot;
-	int	b_size_after_pa;
 	int	stack_b_size;
+	int	should_be_end_of_stack_a;
 
 	stack_b_size = stack_b_max_val - stack_b_min_val + 1;
 	if (stack_b_size <= 20)
@@ -115,15 +115,22 @@ void	ft_send_half_to_a(t_bilist *stack_a, t_bilist *stack_b, int stack_b_min_val
 		ft_join_sorted_b_to_end_a(stack_a, stack_b, stack_b_size);
 		return ;
 	}
+	should_be_end_of_stack_a = stack_b_min_val;
 	i = 0;
-	stack_a_size = 0;
+	pa_count = 0;
 	pivot = (stack_b_max_val - stack_b_min_val) / 2 + stack_b_min_val;
 	while (i < stack_b_size)
 	{
-		if (stack_b->back->value > pivot)
+		if (stack_b->back->value == should_be_end_of_stack_a)
 		{
 			ft_pa(stack_a, stack_b);
-			stack_a_size++;
+			ft_ra(stack_a);
+			should_be_end_of_stack_a++;
+		}
+		else if (stack_b->back->value > pivot)
+		{
+			ft_pa(stack_a, stack_b);
+			pa_count++;
 		}
 		else
 		{
@@ -131,10 +138,9 @@ void	ft_send_half_to_a(t_bilist *stack_a, t_bilist *stack_b, int stack_b_min_val
 		}
 		i++;
 	}
-	b_size_after_pa = stack_b_size - stack_a_size;
-	ft_send_half_to_a(stack_a, stack_b, stack_b_min_val, pivot);
+	ft_send_half_to_a(stack_a, stack_b, should_be_end_of_stack_a, pivot);
 	i = 0;
-	while (i < stack_a_size)
+	while (i < pa_count)
 	{
 		if (stack_a->back->value + 1 == stack_a->front->value)
 			ft_ra(stack_a);
