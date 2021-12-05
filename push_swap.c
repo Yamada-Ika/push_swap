@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:06 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/05 23:20:20 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/05 23:21:46 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,6 @@ void	ft_send_half_to_a(t_bilist *stack_a, t_bilist *stack_b, int stack_b_min_val
 
 void	ft_send_half_to_b(t_bilist *stack_a, t_bilist *stack_b, int stack_a_min_val, int stack_a_max_val)
 {
-	int	stack_b_size;
 	int	pivot;
 	int	ra_count;
 	int	stack_a_size;
@@ -162,7 +161,6 @@ void	ft_send_half_to_b(t_bilist *stack_a, t_bilist *stack_b, int stack_a_min_val
 		}
 		return ;
 	}
-	stack_b_size = 0;
 	ra_count = 0;
 	pivot = (stack_a_max_val - stack_a_min_val) / 2 + stack_a_min_val;
 	while (stack_a_size > 0)
@@ -170,7 +168,6 @@ void	ft_send_half_to_b(t_bilist *stack_a, t_bilist *stack_b, int stack_a_min_val
 		if (stack_a->back->value <= pivot)
 		{
 			ft_pb(stack_a, stack_b);
-			stack_b_size++;
 		}
 		else
 		{
