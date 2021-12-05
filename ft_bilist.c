@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 15:56:54 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/05 23:29:11 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/05 23:41:14 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -305,6 +305,13 @@ void	ft_rra(t_bilist *stack_a)
 void	ft_rrb(t_bilist *stack_b)
 {
 	printf("rrb\n");
+	ft_reverse_rotate(stack_b);
+}
+
+void	ft_rrr(t_bilist *stack_a, t_bilist *stack_b)
+{
+	printf("rrr\n");
+	ft_reverse_rotate(stack_a);
 	ft_reverse_rotate(stack_b);
 }
 

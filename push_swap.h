@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:03 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/05 23:25:52 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/05 23:40:45 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	ft_rb(t_bilist *stack_a);
 void	ft_rr(t_bilist *stack_a, t_bilist *stack_b);
 void	ft_rra(t_bilist *stack_a);
 void	ft_rrb(t_bilist *stack_a);
+void	ft_rrr(t_bilist *stack_a, t_bilist *stack_b);
 
 t_bilist	*ft_new_bilist_sentinel(void);
 t_bilist	*ft_new_bilist(int value);
