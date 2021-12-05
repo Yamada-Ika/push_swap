@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 15:56:54 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/02 16:38:45 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/05 23:29:11 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_bilist	*ft_new_bilist_sentinel(void)
 		return (NULL);
 	sentinel->front = sentinel;
 	sentinel->back = sentinel;
+	sentinel->value = -1;
 	return (sentinel);
 }
 
@@ -288,6 +289,12 @@ void	ft_rb(t_bilist *stack_b)
 	ft_rotate(stack_b);
 }
 
+void	ft_rr(t_bilist *stack_a, t_bilist *stack_b)
+{
+	printf("rr\n");
+	ft_rotate(stack_a);
+	ft_rotate(stack_b);
+}
 
 void	ft_rra(t_bilist *stack_a)
 {

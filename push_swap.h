@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:03 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/05 20:37:57 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/05 23:25:52 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	ft_pa(t_bilist *stack_a, t_bilist *stack_b);
 void	ft_pb(t_bilist *stack_a, t_bilist *stack_b);
 void	ft_ra(t_bilist *stack_a);
 void	ft_rb(t_bilist *stack_a);
+void	ft_rr(t_bilist *stack_a, t_bilist *stack_b);
 void	ft_rra(t_bilist *stack_a);
 void	ft_rrb(t_bilist *stack_a);
 
