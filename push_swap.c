@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:06 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/05 23:16:06 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/05 23:20:20 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,10 +143,8 @@ void	ft_send_half_to_a(t_bilist *stack_a, t_bilist *stack_b, int stack_b_min_val
 
 void	ft_send_half_to_b(t_bilist *stack_a, t_bilist *stack_b, int stack_a_min_val, int stack_a_max_val)
 {
-	int	i;
 	int	stack_b_size;
 	int	pivot;
-	int	a_size_left;
 	int	ra_count;
 	int	stack_a_size;
 
@@ -164,11 +162,10 @@ void	ft_send_half_to_b(t_bilist *stack_a, t_bilist *stack_b, int stack_a_min_val
 		}
 		return ;
 	}
-	i = 0;
 	stack_b_size = 0;
 	ra_count = 0;
 	pivot = (stack_a_max_val - stack_a_min_val) / 2 + stack_a_min_val;
-	while (i < stack_a_size)
+	while (stack_a_size > 0)
 	{
 		if (stack_a->back->value <= pivot)
 		{
@@ -180,7 +177,7 @@ void	ft_send_half_to_b(t_bilist *stack_a, t_bilist *stack_b, int stack_a_min_val
 			ft_ra(stack_a);
 			ra_count++;
 		}
-		i++;
+		stack_a_size--;
 	}
 	while (ra_count > 0 && stack_a_min_val)
 	{
@@ -188,7 +185,6 @@ void	ft_send_half_to_b(t_bilist *stack_a, t_bilist *stack_b, int stack_a_min_val
 		ra_count--;
 	}
 	ft_send_half_to_a(stack_a, stack_b, stack_a_min_val, pivot);
-	a_size_left = stack_a_size - stack_b_size;
 	ft_send_half_to_b(stack_a, stack_b, pivot + 1, stack_a_max_val);
 }
 
