@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:06 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/05 20:41:27 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/05 22:33:47 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,22 @@ void	ft_three(t_bilist *stack_a)
 		ft_rra(stack_a);
 }
 
-void	ft_five(t_bilist *stack_a, t_bilist *stack_b)
+void	ft_under_six(t_bilist *stack_a, t_bilist *stack_b, int stack_a_size)
 {
-	ft_pb_minimum_element(stack_a, stack_b);
-	ft_pb_minimum_element(stack_a, stack_b);
+	int	pb_count;
+
+	pb_count = 0;
+	while (stack_a_size - pb_count > 3)
+	{
+		ft_pb_minimum_element(stack_a, stack_b);
+		pb_count++;
+	}
 	ft_three(stack_a);
-	ft_pa(stack_a, stack_b);
-	ft_pa(stack_a, stack_b);
+	while (pb_count > 0)
+	{
+		ft_pa(stack_a, stack_b);
+		pb_count--;
+	}
 }
 
 void	ft_join_sorted_b_to_end_a(t_bilist *stack_a, t_bilist *stack_b, int stack_b_size)
@@ -187,27 +196,25 @@ void	ft_send_half_to_b(t_bilist *stack_a, t_bilist *stack_b, int stack_a_min_val
 	ft_send_half_to_b(stack_a, stack_b, pivot + 1, stack_a_max_val);
 }
 
-void	ft_bigger(t_bilist *stack_a, t_bilist *stack_b)
-{
-	int	stack_a_size;
-
-	stack_a_size = ft_get_bilist_element(stack_a);
-	ft_send_half_to_b(stack_a, stack_b, 0, stack_a_size - 1);
-}
-
 void	push_swap(t_bilist *stack_a, t_bilist *stack_b)
 {
-	int	element_count;
+	int	stack_a_size;
+	int	min_value_in_a;
+	int	max_value_in_a;
 
 	if (ft_is_sorted_bilist(stack_a))
 		return ;
-	element_count = ft_get_bilist_element(stack_a);
-	if (element_count == 3)
+	stack_a_size = ft_get_bilist_element(stack_a);
+	min_value_in_a = 0;
+	max_value_in_a = stack_a_size - 1;
+	if (stack_a_size == 2)
+		ft_sa(stack_a);
+	else if (stack_a_size == 3)
 		ft_three(stack_a);
-	else if (element_count == 5)
-		ft_five(stack_a, stack_b);
+	else if (stack_a_size <= 6)
+		ft_under_six(stack_a, stack_b, stack_a_size);
 	else
-		ft_bigger(stack_a, stack_b);
+		ft_send_half_to_b(stack_a, stack_b, min_value_in_a, max_value_in_a);
 	// ft_print_stacks(stack_a, stack_b);
 }
 
