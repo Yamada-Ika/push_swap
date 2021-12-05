@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:06 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/02 16:39:13 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/05 14:51:57 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,7 +201,7 @@ void	push_swap(t_bilist *stack_a, t_bilist *stack_b)
 		ft_five(stack_a, stack_b);
 	else
 		ft_bigger(stack_a, stack_b);
-	ft_print_stacks(stack_a, stack_b);
+	// ft_print_stacks(stack_a, stack_b);
 }
 
 int	main(int argc, char *argv[])
