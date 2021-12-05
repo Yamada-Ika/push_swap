@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:06 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/05 23:30:56 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/05 23:37:59 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,19 @@ void	ft_join_sorted_b_to_end_a(t_bilist *stack_a, t_bilist *stack_b, int stack_b
 	}
 }
 
+void	ft_sort_left_in_a(t_bilist *stack_a, t_bilist *stack_b, int stack_a_size)
+{
+	if (stack_a_size == 1)
+		ft_ra(stack_a);
+	if (stack_a_size == 2)
+	{
+		if (stack_a->back->value > stack_a->back->back->value)
+			ft_sa(stack_a);
+		ft_ra(stack_a);
+		ft_ra(stack_a);
+	}
+}
+
 void	ft_send_half_to_a(t_bilist *stack_a, t_bilist *stack_b, int stack_b_min_val, int stack_b_max_val)
 {
 	int	pa_count;
@@ -149,18 +162,7 @@ void	ft_send_half_to_b(t_bilist *stack_a, t_bilist *stack_b, int stack_a_min_val
 
 	stack_a_size = stack_a_max_val - stack_a_min_val + 1;
 	if (stack_a_size <= 2)
-	{
-		if (stack_a_size == 1)
-			ft_ra(stack_a);
-		if (stack_a_size == 2)
-		{
-			if (stack_a->back->value > stack_a->back->back->value)
-				ft_sa(stack_a);
-			ft_ra(stack_a);
-			ft_ra(stack_a);
-		}
-		return ;
-	}
+		return ft_sort_left_in_a(stack_a, stack_b, stack_a_size);
 	ra_count = 0;
 	pivot = (stack_a_max_val - stack_a_min_val) / 2 + stack_a_min_val;
 	while (stack_a_size > 0)
