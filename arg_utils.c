@@ -6,42 +6,42 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:13:56 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/26 01:28:12 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/26 03:54:01 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-bool	ft_is_already_exist(int *array, int size, long long val)
+bool	ft_is_exist(int *arry, int size, long long val)
 {
 	int	i;
 
 	i = 0;
 	while (i < size)
 	{
-		if (array[i] == val)
+		if (arry[i] == val)
 			return (true);
 		i++;
 	}
 	return (false);
 }
 
-bool	ft_is_wrong_array(int argc, char *argv[])
+bool	ft_is_wrong_arry(int argc, char *argv[])
 {
-	int		*array;
-	int		array_size;
+	int		*arry;
+	int		arry_size;
 	int		i;
-	char	*non_num;
+	char	*non_num_str;
 
-	array_size = argc - 1;
-	array = (int *)malloc(array_size * sizeof(long long));
+	arry_size = argc - 1;
+	arry = (int *)malloc(arry_size * sizeof(long long));
 	i = 0;
-	while (i < array_size)
+	while (i < arry_size)
 	{
-		array[i] = strtoll(argv[i + 1], &non_num, 10);
-		if (strcmp(non_num, "") || array[i] > INT_MAX || array[i] < INT_MIN)
+		arry[i] = strtoll(argv[i + 1], &non_num_str, 10);
+		if (strcmp(non_num_str, "") || arry[i] > INT_MAX || arry[i] < INT_MIN)
 			return (true);
-		if (ft_is_already_exist(array, i, array[i]))
+		if (ft_is_exist(arry, i, arry[i]))
 			return (true);
 		i++;
 	}
@@ -52,7 +52,7 @@ bool	ft_is_wrong_arg(int argc, char *argv[])
 {
 	if (argc == 1)
 		return (true);
-	if (ft_is_wrong_array(argc, argv))
+	if (ft_is_wrong_arry(argc, argv))
 		return (true);
 	return (false);
 }

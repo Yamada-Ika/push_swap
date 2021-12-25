@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   array_utils.c                                      :+:      :+:    :+:   */
+/*   arry_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,41 +12,41 @@
 
 #include "push_swap.h"
 
-int	*ft_get_array_from_arg(int argc, char *argv[])
+int	*ft_get_arry_from_arg(int argc, char *argv[])
 {
-	size_t	array_size;
-	size_t	i;
-	int		*array;
+	int		arry_size;
+	int		i;
+	int		*arry;
 	char	*end;
 
-	array_size = (size_t)argc - 1;
-	array = (int *)malloc(array_size * sizeof(long long));
-	if (array == NULL)
-		return (NULL);
+	arry_size = argc - 1;
+	arry = (int *)malloc(arry_size * sizeof(int));
+	if (arry == NULL)
+		ft_error("Error\n");
 	i = 0;
-	while (i < array_size)
+	while (i < arry_size)
 	{
-		array[i] = strtoll(argv[i + 1], &end, 10);
+		arry[i] = strtoll(argv[i + 1], &end, 10);
 		i++;
 	}
-	return (array);
+	return (arry);
 }
 
-int	ft_get_rank_from_array(int *sorted_array, int size, int element)
+int	ft_get_rank_from_arry(int *sorted_arry, int size, int element)
 {
 	int	i;
 
 	i = 0;
 	while (i < size)
 	{
-		if (sorted_array[i] == element)
+		if (sorted_arry[i] == element)
 			return (i);
 		i++;
 	}
 	return (-1);
 }
 
-void	ft_sort_ascending_order(int *array, int size)
+void	ft_sort_ascending_order(int *arry, int size)
 {
 	bool	is_swap;
 	int		tmp;
@@ -58,11 +58,11 @@ void	ft_sort_ascending_order(int *array, int size)
 		is_swap = 0;
 		while (i < size - 1)
 		{
-			if (array[i] > array[i + 1])
+			if (arry[i] > arry[i + 1])
 			{
-				tmp = array[i];
-				array[i] = array[i + 1];
-				array[i + 1] = tmp;
+				tmp = arry[i];
+				arry[i] = arry[i + 1];
+				arry[i + 1] = tmp;
 				is_swap = true;
 			}
 			i++;
@@ -72,38 +72,38 @@ void	ft_sort_ascending_order(int *array, int size)
 	}
 }
 
-int	*ft_copy_array(int *copied_array, int size)
+int	*ft_copy_arry(int *copied_arry, int size)
 {
 	int	i;
-	int	*new_array;
+	int	*new_arry;
 
-	new_array = (int *)malloc(size * sizeof(int));
-	if (new_array == NULL)
+	new_arry = (int *)malloc(size * sizeof(int));
+	if (new_arry == NULL)
 		return (NULL);
 	i = 0;
 	while (i < size)
 	{
-		new_array[i] = copied_array[i];
+		new_arry[i] = copied_arry[i];
 		i++;
 	}
-	return (new_array);
+	return (new_arry);
 }
 
-void	ft_array_compress(int *array, int size)
+void	ft_arry_compress(int *arry, int size)
 {
 	int	i;
 	int	rank;
-	int	*sorted_array;
+	int	*sorted_arry;
 
-	sorted_array = ft_copy_array(array, size);
-	if (sorted_array == NULL)
-		return ;
-	ft_sort_ascending_order(sorted_array, size);
+	sorted_arry = ft_copy_arry(arry, size);
+	if (sorted_arry == NULL)
+		ft_error("Error\n");
+	ft_sort_ascending_order(sorted_arry, size);
 	i = 0;
 	while (i < size)
 	{
-		rank = ft_get_rank_from_array(sorted_array, size, array[i]);
-		array[i] = rank;
+		rank = ft_get_rank_from_arry(sorted_arry, size, arry[i]);
+		arry[i] = rank;
 		i++;
 	}
 }
