@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 01:35:58 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/26 01:36:06 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/26 01:42:27 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 void	ft_three(t_bilist *stack_a)
 {
-	int	values[3];
+	int	vals[3];
 
 	if (ft_is_sorted_bilist(stack_a))
 		return ;
-	values[0] = stack_a->front->value;
-	values[1] = stack_a->front->front->value;
-	values[2] = stack_a->back->value;
-	if (values[2] > values[1] && values[1] < values[0] && values[2] < values[0])
+	vals[0] = stack_a->front->value;
+	vals[1] = stack_a->front->front->value;
+	vals[2] = stack_a->back->value;
+	if (vals[2] > vals[1] && vals[1] < vals[0] && vals[2] < vals[0])
 		ft_sa(stack_a);
-	else if (values[2] > values[1] && values[1] > values[0])
+	else if (vals[2] > vals[1] && vals[1] > vals[0])
 	{
 		ft_sa(stack_a);
 		ft_rra(stack_a);
 	}
-	else if (values[2] > values[1] && values[1] < values[0] && values[2] > values[0])
+	else if (vals[2] > vals[1] && vals[1] < vals[0] && vals[2] > vals[0])
 		ft_ra(stack_a);
-	else if (values[2] < values[1] && values[1] > values[0] && values[2] < values[0])
+	else if (vals[2] < vals[1] && vals[1] > vals[0] && vals[2] < vals[0])
 	{
 		ft_sa(stack_a);
 		ft_ra(stack_a);
