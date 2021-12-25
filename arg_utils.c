@@ -6,13 +6,13 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:13:56 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/26 03:54:01 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/26 05:06:05 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-bool	ft_is_exist(int *arry, int size, long long val)
+static bool	ft_is_exist(int *arry, int size, long long val)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ bool	ft_is_exist(int *arry, int size, long long val)
 	return (false);
 }
 
-bool	ft_is_wrong_arry(int argc, char *argv[])
+static bool	ft_is_wrong_arry(int argc, char *argv[])
 {
 	int		*arry;
 	int		arry_size;

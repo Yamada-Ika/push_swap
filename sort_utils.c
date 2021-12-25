@@ -6,11 +6,11 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 01:35:58 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/26 03:50:18 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/26 05:17:49 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "order.h"
 
 void	ft_size_three(t_stack *a)
 {
@@ -59,13 +59,14 @@ void	ft_size_under_six(t_stack *a, t_stack *b, int a_size)
 
 void	ft_join_sorted_b_to_end_of_a(t_stack *a, t_stack *b, int b_size)
 {
-	int	i;
-	int	j;
-	int	tmp_b_size;
-	int	min_val = ft_get_min_val_from_stack(b);
-	int	next_min_val;
+	int		i;
+	int		j;
+	int		tmp_b_size;
+	int		min_val;
+	int		next_min_val;
 	bool	is_min_val_in_b;
 
+	min_val = ft_get_min_val_from_stack(b);
 	tmp_b_size = b_size;
 	i = 0;
 	while (i < b_size)
