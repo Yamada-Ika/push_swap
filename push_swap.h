@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:03 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/05 23:40:45 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/26 01:14:20 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define TAIL -1
 # define SENTINEL 0
 # define HEAD 1
+# define ERROR 1
 
 typedef struct s_bilist
 {
@@ -31,8 +32,8 @@ typedef struct s_bilist
 }	t_bilist;
 
 // argument
-int		ft_is_arg_correct(int argc, char *argv[]);
-int		*ft_get_intarray_from_arg(int argc, char *argv[]);
+bool	ft_is_wrong_arg(int argc, char *argv[]);
+int		*ft_get_array_from_arg(int argc, char *argv[]);
 void	ft_array_compress(int *array, int size);
 
 void	ft_sa(t_bilist *stack_a);

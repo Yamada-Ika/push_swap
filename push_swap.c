@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:06 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/05 23:42:53 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/26 01:15:25 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,7 @@ void	ft_join_sorted_b_to_end_a(t_bilist *stack_a, t_bilist *stack_b, int stack_b
 	i = 0;
 	while (i < stack_b_size)
 	{
-		// ft_print_stacks(stack_a, stack_b);
-		// ft_pa_minimum_element(stack_a, stack_b);
-		// printf("min_value : %d\n", min_value);
 		is_min_value_in_stack_b = ft_is_value_in_stack(stack_b, min_value);
-		// printf("is_min_value_in_stack_b : %d\n", is_min_value_in_stack_b);
 		next_min_value = min_value + 1;
 		j = 0;
 		while (j < tmp_b_size && is_min_value_in_stack_b)
@@ -165,7 +161,7 @@ void	ft_send_half_to_b(t_bilist *stack_a, t_bilist *stack_b, int stack_a_min_val
 		return ft_sort_left_in_a(stack_a, stack_b, stack_a_size);
 	ra_count = 0;
 	pivot = (stack_a_max_val - stack_a_min_val) / 2 + stack_a_min_val;
-	while (stack_a_size > 0)
+	while (stack_a_size-- > 0)
 	{
 		if (stack_a->back->value <= pivot)
 			ft_pb(stack_a, stack_b);
@@ -177,15 +173,13 @@ void	ft_send_half_to_b(t_bilist *stack_a, t_bilist *stack_b, int stack_a_min_val
 				ft_ra(stack_a);
 			ra_count++;
 		}
-		stack_a_size--;
 	}
-	while (ra_count > 0 && stack_a_min_val)
+	while (ra_count-- > 0 && stack_a_min_val)
 	{
 		if (stack_b->back->value != stack_a_min_val)
 			ft_rrr(stack_a, stack_b);
 		else
 			ft_rra(stack_a);
-		ra_count--;
 	}
 	ft_send_half_to_a(stack_a, stack_b, stack_a_min_val, pivot);
 	ft_send_half_to_b(stack_a, stack_b, pivot + 1, stack_a_max_val);
@@ -200,16 +194,15 @@ void	push_swap(t_bilist *stack_a, t_bilist *stack_b)
 	if (ft_is_sorted_bilist(stack_a))
 		return ;
 	stack_a_size = ft_get_bilist_element(stack_a);
-	min_value_in_a = 0;
-	max_value_in_a = stack_a_size - 1;
 	if (stack_a_size == 2)
 		ft_sa(stack_a);
 	else if (stack_a_size == 3)
 		ft_three(stack_a);
 	else if (stack_a_size <= 6)
 		ft_under_six(stack_a, stack_b, stack_a_size);
-	else
-		ft_send_half_to_b(stack_a, stack_b, min_value_in_a, max_value_in_a);
+	min_value_in_a = 0;
+	max_value_in_a = stack_a_size - 1;
+	ft_send_half_to_b(stack_a, stack_b, min_value_in_a, max_value_in_a);
 	// ft_print_stacks(stack_a, stack_b);
 }
 
@@ -220,16 +213,16 @@ int	main(int argc, char *argv[])
 	int			*array;
 	size_t		array_size;
 
-	if (ft_is_arg_correct(argc, argv) != 1)
+	if (ft_is_wrong_arg(argc, argv))
 	{
 		printf("Error\n");
-		return (-1);
+		return (ERROR);
 	}
-	array = ft_get_intarray_from_arg(argc, argv);
+	array = ft_get_array_from_arg(argc, argv);
 	if (array == NULL)
 	{
 		printf("Error\n");
-		return (-1);
+		return (ERROR);
 	}
 	array_size = (size_t)argc - 1;
 	ft_array_compress(array, array_size);
