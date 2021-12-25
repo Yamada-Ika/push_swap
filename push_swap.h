@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:03 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/26 01:14:20 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/26 03:35:11 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,15 @@ bool	ft_is_wrong_arg(int argc, char *argv[]);
 int		*ft_get_array_from_arg(int argc, char *argv[]);
 void	ft_array_compress(int *array, int size);
 
+// sort
+void	ft_three(t_bilist *stack_a);
+void	ft_under_six(t_bilist *stack_a, t_bilist *stack_b, int stack_a_size);
+void	ft_join_sorted_b_to_end_a(t_bilist *stack_a, t_bilist *stack_b, int stack_b_size);
+void	ft_sort_left_in_a(t_bilist *stack_a, t_bilist *stack_b, int stack_a_size);
+void	ft_send_half_to_a(t_bilist *stack_a, t_bilist *stack_b, int stack_b_min_val, int stack_b_max_val);
+void	ft_send_half_to_b(t_bilist *stack_a, t_bilist *stack_b, int stack_a_min_val, int stack_a_max_val);
+
+// order
 void	ft_sa(t_bilist *stack_a);
 void	ft_pa(t_bilist *stack_a, t_bilist *stack_b);
 void	ft_pb(t_bilist *stack_a, t_bilist *stack_b);

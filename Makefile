@@ -2,7 +2,7 @@ CC			:= gcc
 CFLAGS		:= #-g -fsanitize=address #-Wall -Wextra -Werror
 
 NAME 		:= push_swap
-SRCS		:= push_swap.c ft_bilist.c arg_utils.c array_utils.c
+SRCS		:= push_swap.c ft_bilist.c arg_utils.c array_utils.c sort_utils.c
 OBJS		:= $(SRCS:.c=.o)
 
 all: $(NAME)
