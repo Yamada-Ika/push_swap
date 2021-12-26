@@ -6,12 +6,11 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 04:42:33 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/26 05:08:51 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/26 17:47:03 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "bilist.h"
+#include "stack_utils.h"
 
 t_stack	*ft_new_stack(int	*arry, size_t size)
 {
@@ -36,20 +35,21 @@ t_stack	*ft_new_stack(int	*arry, size_t size)
 	return (new_stack);
 }
 
-int		ft_get_stack_size(t_stack *stack)
+int	ft_get_stack_size(t_stack *stack)
 {
-	t_stack	*dummy = stack;
-	int			element_count = 0;
+	t_stack	*dummy;
+	int		size;
 
 	dummy = stack;
+	size = 0;
 	while (true)
 	{
 		stack = stack->front;
 		if (stack == dummy)
 			break;
-		element_count++;
+		size++;
 	}
-	return (element_count);
+	return (size);
 }
 
 void	ft_delete_stack(t_stack *stack)
@@ -66,4 +66,5 @@ void	ft_delete_stack(t_stack *stack)
 		if (stack == dummy)
 			break;
 	}
+	ft_del_bilist(&dummy);
 }

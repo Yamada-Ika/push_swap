@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:06 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/26 03:59:31 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/26 17:11:27 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	push_swap(t_stack *a, t_stack *b)
 	if (a_size == 2)
 		ft_sa(a);
 	else if (a_size == 3)
-		ft_size_three(a);
+		ft_sort_three(a);
 	else if (a_size <= 6)
-		ft_size_under_six(a, b, a_size);
+		ft_sort_under_six(a, b, a_size);
 	else
 	{
 		min_val_in_a = 0;
@@ -46,16 +46,16 @@ int	main(int argc, char *argv[])
 	t_stack	*a;
 	t_stack	*b;
 	int		*arry;
-	int		arry_size;
+	int		size;
 
 	if (ft_is_wrong_arg(argc, argv))
 		ft_error("Error\n");
 	arry = ft_get_arry_from_arg(argc, argv);
 	if (arry == NULL)
 		ft_error("Error\n");
-	arry_size = argc - 1;
-	ft_arry_compress(arry, arry_size);
-	a = ft_new_stack(arry, arry_size);
+	size = argc - 1;
+	ft_arry_compress(arry, size);
+	a = ft_new_stack(arry, size);
 	b = ft_new_stack(NULL, 0);
 	push_swap(a, b);
 	ft_delete_stack(a);

@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:13:56 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/26 05:06:05 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/26 16:34:48 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static bool	ft_is_wrong_arry(int argc, char *argv[])
 			return (true);
 		i++;
 	}
+	free(arry);
 	return (false);
 }
 

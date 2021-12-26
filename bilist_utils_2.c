@@ -63,15 +63,15 @@ bool	ft_is_val_in_stack(t_stack *stack, int val)
 
 bool	ft_is_sorted(t_stack *bilist)
 {
-	t_stack	*sentinel_node;
+	t_stack	*dummy;
 	int		prev_val;
 
-	prev_val = bilist->front->val;
-	sentinel_node = bilist;
+	prev_val = INT_MIN;
+	dummy = bilist;
 	while (true)
 	{
 		bilist = bilist->front;
-		if (sentinel_node == bilist)
+		if (dummy == bilist)
 			break ;
 		if (bilist->val > prev_val)
 			return (false);

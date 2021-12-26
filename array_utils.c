@@ -14,39 +14,38 @@
 
 int	*ft_get_arry_from_arg(int argc, char *argv[])
 {
-	int		arry_size;
-	int		i;
 	int		*arry;
-	char	*end;
+	int		size;
+	int		i;
 
-	arry_size = argc - 1;
-	arry = (int *)malloc(arry_size * sizeof(int));
+	size = argc - 1;
+	arry = (int *)malloc(size * sizeof(int));
 	if (arry == NULL)
 		ft_error("Error\n");
 	i = 0;
-	while (i < arry_size)
+	while (i < size)
 	{
-		arry[i] = strtoll(argv[i + 1], &end, 10);
+		arry[i] = atoi(argv[i + 1]);
 		i++;
 	}
 	return (arry);
 }
 
-int	ft_get_rank_from_arry(int *sorted_arry, int size, int element)
+static int	ft_get_rank_from_arry(int *arry, int size, int val)
 {
 	int	i;
 
 	i = 0;
 	while (i < size)
 	{
-		if (sorted_arry[i] == element)
+		if (arry[i] == val)
 			return (i);
 		i++;
 	}
 	return (-1);
 }
 
-void	ft_sort_ascending_order(int *arry, int size)
+static void	ft_sort_ascending_order(int *arry, int size)
 {
 	bool	is_swap;
 	int		tmp;
@@ -72,10 +71,10 @@ void	ft_sort_ascending_order(int *arry, int size)
 	}
 }
 
-int	*ft_copy_arry(int *copied_arry, int size)
+static int	*ft_copy_arry(int *copied_arry, int size)
 {
-	int	i;
 	int	*new_arry;
+	int	i;
 
 	new_arry = (int *)malloc(size * sizeof(int));
 	if (new_arry == NULL)
@@ -91,9 +90,8 @@ int	*ft_copy_arry(int *copied_arry, int size)
 
 void	ft_arry_compress(int *arry, int size)
 {
-	int	i;
-	int	rank;
 	int	*sorted_arry;
+	int	i;
 
 	sorted_arry = ft_copy_arry(arry, size);
 	if (sorted_arry == NULL)
@@ -102,8 +100,8 @@ void	ft_arry_compress(int *arry, int size)
 	i = 0;
 	while (i < size)
 	{
-		rank = ft_get_rank_from_arry(sorted_arry, size, arry[i]);
-		arry[i] = rank;
+		arry[i] = ft_get_rank_from_arry(sorted_arry, size, arry[i]);
 		i++;
 	}
+	free(sorted_arry);
 }
