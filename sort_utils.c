@@ -6,70 +6,24 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 01:35:58 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/26 18:06:00 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/28 20:27:36 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "order.h"
 
-void	ft_sort_three(t_stack *a)
-{
-	int	vals[3];
-
-	if (ft_is_sorted(a))
-		return ;
-	vals[0] = a->front->val;
-	vals[1] = a->front->front->val;
-	vals[2] = a->back->val;
-	if (vals[2] > vals[1] && vals[1] < vals[0] && vals[2] < vals[0])
-		ft_sa(a);
-	else if (vals[2] > vals[1] && vals[1] > vals[0])
-	{
-		ft_sa(a);
-		ft_rra(a);
-	}
-	else if (vals[2] > vals[1] && vals[1] < vals[0] && vals[2] > vals[0])
-		ft_ra(a);
-	else if (vals[2] < vals[1] && vals[1] > vals[0] && vals[2] < vals[0])
-	{
-		ft_sa(a);
-		ft_ra(a);
-	}
-	else
-		ft_rra(a);
-}
-
-void	ft_sort_under_six(t_stack *a, t_stack *b, int a_size)
-{
-	int	pb_cnt;
-	int	now_a_size;
-
-	pb_cnt = 0;
-	now_a_size = a_size;
-	while (now_a_size-- > 3)
-	{
-		ft_pb_min_val(a, b);
-		pb_cnt++;
-	}
-	ft_sort_three(a);
-	while (pb_cnt-- > 0)
-		ft_pa(a, b);
-}
-
-void	ft_join_sorted_b_to_end_of_a(t_stack *a, t_stack *b, int b_size)
+static void	ft_join_sorted_b_to_end_of_a(t_stack *a, t_stack *b, int min_val, int size)
 {
 	int		j;
-	int		tmp_b_size;
-	int		min_val;
+	int		tmp_size;
 	int		next_min_val;
 
-	min_val = ft_get_min_val_from_stack(b);
-	tmp_b_size = b_size;
-	while (b_size-- > 0)
+	tmp_size = size;
+	while (size-- > 0)
 	{
 		next_min_val = min_val + 1;
 		j = 0;
-		while (j < tmp_b_size && ft_is_val_in_stack(b, min_val))
+		while (j < tmp_size && ft_is_val_in_stack(b, min_val))
 		{
 			if (min_val == b->back->val)
 			{
@@ -79,7 +33,7 @@ void	ft_join_sorted_b_to_end_of_a(t_stack *a, t_stack *b, int b_size)
 			if (a->back->val > b->back->val)
 			{
 				ft_pa(a, b);
-				tmp_b_size--;
+				tmp_size--;
 			}
 			else
 			{
@@ -92,7 +46,7 @@ void	ft_join_sorted_b_to_end_of_a(t_stack *a, t_stack *b, int b_size)
 	}
 }
 
-void	ft_sort_left_in_a(t_stack *a, t_stack *b, int a_size)
+static void	ft_sort_left_in_a(t_stack *a, t_stack *b, int a_size)
 {
 	if (a_size == 1)
 		ft_ra(a);
@@ -116,7 +70,7 @@ static void	ft_move_to_b(t_stack *a, t_stack *b, int pa_cnt)
 	}
 }
 
-void	ft_send_half_to_a(t_stack *a, t_stack *b, int min_val, int max_val)
+static void	ft_send_half_to_a(t_stack *a, t_stack *b, int min_val, int max_val)
 {
 	int	pa_cnt;
 	int	pivot;
@@ -124,7 +78,7 @@ void	ft_send_half_to_a(t_stack *a, t_stack *b, int min_val, int max_val)
 
 	b_size = max_val - min_val + 1;
 	if (b_size <= 20)
-		return ft_join_sorted_b_to_end_of_a(a, b, b_size);
+		return (ft_join_sorted_b_to_end_of_a(a, b, min_val, b_size));
 	pa_cnt = 0;
 	pivot = (max_val - min_val) / 2 + min_val;
 	while (b_size-- > 0)
@@ -167,9 +121,9 @@ void	ft_send_half_to_b(t_stack *a, t_stack *b, int min_val, int max_val)
 
 	a_size = max_val - min_val + 1;
 	if (a_size <= 2)
-		return ft_sort_left_in_a(a, b, a_size);
-	ra_cnt = 0;
+		return (ft_sort_left_in_a(a, b, a_size));
 	pivot = (max_val - min_val) / 2 + min_val;
+	ra_cnt = 0;
 	while (a_size-- > 0)
 	{
 		if (a->back->val <= pivot)

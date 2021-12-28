@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 04:42:33 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/26 17:47:03 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/28 20:04:27 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_get_stack_size(t_stack *stack)
 	{
 		stack = stack->front;
 		if (stack == dummy)
-			break;
+			break ;
 		size++;
 	}
 	return (size);
@@ -64,7 +64,7 @@ void	ft_delete_stack(t_stack *stack)
 		stack = stack->front;
 		ft_del_bilist(&prev_stack);
 		if (stack == dummy)
-			break;
+			break ;
 	}
 	ft_del_bilist(&dummy);
 }

@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 04:55:30 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/26 18:16:10 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/28 20:15:05 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,22 @@
 int	ft_get_min_val_from_stack(t_stack *bilist)
 {
 	int		index;
-	int		minimum_val;
+	int		min_val;
 	t_stack	*sentinel;
 
 	sentinel = bilist;
 	index = 0;
-	minimum_val = INT_MAX;
+	min_val = INT_MAX;
 	while (true)
 	{
 		bilist = bilist->back;
 		if (bilist == sentinel)
 			break ;
-		if (minimum_val > bilist->val)
-			minimum_val = bilist->val;
+		if (min_val > bilist->val)
+			min_val = bilist->val;
 		index++;
 	}
-	return (minimum_val);
+	return (min_val);
 }
 
 int	ft_get_min_val_at(t_stack *bilist)

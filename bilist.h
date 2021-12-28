@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 04:08:22 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/26 16:57:06 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/28 20:05:05 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 typedef struct s_stack
 {
-	int		val;
-	struct	s_stack	*front;
-	struct	s_stack	*back;
+	int				val;
+	struct s_stack	*front;
+	struct s_stack	*back;
 }	t_stack;
 
 t_stack	*ft_new_bilist_sentinel(void);
