@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 04:42:33 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/28 20:04:27 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/29 12:09:36 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,4 @@ void	ft_delete_stack(t_stack *stack)
 		if (stack == dummy)
 			break ;
 	}
-	ft_del_bilist(&dummy);
 }

@@ -66,7 +66,7 @@ bool	ft_is_sorted(t_stack *bilist)
 	t_stack	*dummy;
 	int		prev_val;
 
-	prev_val = INT_MIN;
+	prev_val = INT_MAX;
 	dummy = bilist;
 	while (true)
 	{
