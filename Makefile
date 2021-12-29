@@ -1,6 +1,12 @@
 CC			:= gcc
-CFLAGS		:= #-g -fsanitize=address #-Wall -Wextra -Werror
+CFLAGS		:= #-Wall -Wextra -Werror
 
+# libft
+LIBFT_DIR	:= libft
+LIBFT_A		:= libft.a
+LIBFT_A		:= $(addprefix $(LIBFT_DIR)/, $(LIBFT_A))
+
+# push_swap
 NAME 		:= push_swap
 SRCS		:= \
 arg_utils.c              order_1.c	\
@@ -14,8 +20,13 @@ OBJS		:= $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(SRCS)
-	$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
+$(NAME): $(LIBFT_A) $(SRCS)
+	$(CC) $(CFLAGS) -o $(NAME) $(SRCS) $(LIBFT_A)
+
+$(LIBFT_A): empty
+	make -C $(LIBFT_DIR)
+
+empty:
 
 clean:
 	rm -rf $(NAME)

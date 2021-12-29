@@ -21,11 +21,11 @@ int	*ft_get_arry_from_arg(int argc, char *argv[])
 	size = argc - 1;
 	arry = (int *)malloc(size * sizeof(int));
 	if (arry == NULL)
-		ft_error("Error\n");
+		ft_error("Error", MEM_ERROR);
 	i = 0;
 	while (i < size)
 	{
-		arry[i] = atoi(argv[i + 1]);
+		arry[i] = ft_atoi(argv[i + 1]);
 		i++;
 	}
 	return (arry);
@@ -95,7 +95,7 @@ void	ft_arry_compress(int *arry, int size)
 
 	sorted_arry = ft_copy_arry(arry, size);
 	if (sorted_arry == NULL)
-		ft_error("Error\n");
+		ft_error("Error", MEM_ERROR);
 	ft_sort_ascending_order(sorted_arry, size);
 	i = 0;
 	while (i < size)

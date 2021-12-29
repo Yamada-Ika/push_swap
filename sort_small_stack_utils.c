@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 20:10:40 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/29 12:26:26 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/29 22:53:47 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_sort_three(t_stack *a)
 	ft_sort_three_helper(a, bottm, centr, top);
 }
 
-void	ft_sort_under_six(t_stack *a, t_stack *b, int a_size)
+void	ft_sort_below_five(t_stack *a, t_stack *b, int a_size)
 {
 	int	pb_cnt;
 	int	now_a_size;

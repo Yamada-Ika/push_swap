@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:03 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/29 22:17:14 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/29 22:18:38 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 # include <stdio.h>
 # include <string.h>
 
-# define ERROR 1
+# define ARG_ERROR 1
+# define MEM_ERROR 1
 
 // utils
 bool	ft_is_wrong_arg(int argc, char *argv[]);

@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 04:05:13 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/26 04:26:12 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/30 00:03:28 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 # define ORDER_H
 
 # include "bilist.h"
-# include <unistd.h>
-# include <stdio.h>
+# include "libft/libft.h"
 
 void	ft_sa(t_stack *a);
 void	ft_pa(t_stack *a, t_stack *b);
