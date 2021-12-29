@@ -1,6 +1,7 @@
 .test
 a.out
 checker
+checker_mac
 push_swap_tester
 push_swap
 .vscode
