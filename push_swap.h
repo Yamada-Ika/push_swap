@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:03 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/26 16:58:51 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/29 22:17:14 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ int		*ft_get_arry_from_arg(int argc, char *argv[]);
 void	ft_arry_compress(int *arry, int size);
 
 // error
-void	ft_error(const char *msg);
+void	ft_error(char *fmt, int status);
 
 #endif

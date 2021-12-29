@@ -6,19 +6,19 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:06 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/26 17:11:27 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/29 22:17:00 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_error(const char *msg)
+void	ft_error(char *fmt, int status)
 {
-	write(STDERR_FILENO, msg, strlen(msg));
-	exit(ERROR);
+	ft_putendl_fd(fmt, STDERR_FILENO);
+	exit(status);
 }
 
-void	push_swap(t_stack *a, t_stack *b)
+static void	push_swap(t_stack *a, t_stack *b)
 {
 	int	a_size;
 	int	min_val_in_a;
@@ -37,7 +37,7 @@ void	push_swap(t_stack *a, t_stack *b)
 	{
 		min_val_in_a = 0;
 		max_val_in_a = a_size - 1;
-		ft_send_half_to_b(a, b, min_val_in_a, max_val_in_a);
+		ft_pb_half(a, b, min_val_in_a, max_val_in_a);
 	}
 }
 

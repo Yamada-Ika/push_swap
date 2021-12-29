@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 04:08:22 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/28 20:05:05 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/29 22:13:16 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct s_stack
 t_stack	*ft_new_bilist_sentinel(void);
 t_stack	*ft_new_bilist(int val);
 void	ft_del_bilist(t_stack **bilist);
-
 void	ft_add_bilist(t_stack *bilist_1, t_stack *bilist_2);
 void	ft_pb_min_val(t_stack *a, t_stack *b);
 t_stack	*ft_pop_bilist(t_stack *bilist);
