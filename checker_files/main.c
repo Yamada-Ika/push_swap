@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 00:40:35 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/30 02:32:50 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/30 16:08:35 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <stdbool.h>
 #include "create_stack.h"
 #include "order.h"
+
+char	*get_next_line(int fd);
 
 void	ft_error(char *fmt, int status)
 {
@@ -62,8 +64,6 @@ bool	ft_is_wrong_arry(int argc, char *argv[])
 
 bool	ft_is_wrong_arg(int argc, char *argv[])
 {
-	if (argc == 1)
-		return (true);
 	if (ft_is_wrong_arry(argc, argv))
 		return (true);
 	return (false);
@@ -155,15 +155,13 @@ void	ft_get_operation_helper(t_stack *a, t_stack *b, char op[5])
 
 void	ft_get_operation(t_stack *a, t_stack *b)
 {
-	char	op[5];
-	ssize_t	op_len;
+	char	*op;
 
 	while (true)
 	{
-		op_len = read(STDIN_FILENO, op, 5);
-		if (op_len == 0)
+		op = get_next_line(STDIN_FILENO);
+		if (op == NULL)
 			return ;
-		op[op_len] = '\0';
 		ft_get_operation_helper(a, b, op);
 	}
 }
@@ -175,6 +173,8 @@ int	main(int argc, char *argv[])
 	int		*arry;
 	int		size;
 
+	if (argc == 1)
+		return (0);
 	if (ft_is_wrong_arg(argc, argv))
 		ft_error("Error", ARG_ERROR);
 	arry = ft_get_arry_from_arg(argc, argv);
@@ -187,6 +187,6 @@ int	main(int argc, char *argv[])
 	if (ft_is_sorted(a) && ft_get_stack_size(b) == 0)
 		ft_putendl_fd("OK", STDOUT_FILENO);
 	else
-		ft_error("KO", SORT_ERROR);
+		ft_putendl_fd("KO", STDOUT_FILENO);
 	return (0);
 }

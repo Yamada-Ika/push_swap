@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:13:56 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/30 00:04:18 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/30 14:12:10 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ static bool	ft_is_wrong_arry(int argc, char *argv[])
 
 bool	ft_is_wrong_arg(int argc, char *argv[])
 {
-	if (argc == 1)
-		return (true);
 	if (ft_is_wrong_arry(argc, argv))
 		return (true);
 	return (false);

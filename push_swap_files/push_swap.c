@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:06 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/29 22:57:06 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/30 14:12:04 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	main(int argc, char *argv[])
 	int		*arry;
 	int		size;
 
+	if (argc == 1)
+		return (0);
 	if (ft_is_wrong_arg(argc, argv))
 		ft_error("Error", ARG_ERROR);
 	arry = ft_get_arry_from_arg(argc, argv);
