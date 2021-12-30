@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   macro.h                                            :+:      :+:    :+:   */
+/*   op_1.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/30 01:39:02 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/30 17:12:51 by iyamada          ###   ########.fr       */
+/*   Created: 2021/12/30 16:36:03 by iyamada           #+#    #+#             */
+/*   Updated: 2021/12/30 17:06:41 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MACRO_H
-# define MACRO_H
+#include "op_utils.h"
 
-// error status
-# define ARG_ERROR 1
-# define MEM_ERROR 2
-# define SORT_ERROR 3
-# define OP_ERROR 3
+void	ft_sa(t_stack *a)
+{
+	ft_swap(a);
+}
 
-// swap_helper
-# define SECOND_TAIL -2
-# define TAIL -1
-# define SENTINEL 0
-# define HEAD 1
+void	ft_sb(t_stack *b)
+{
+	ft_swap(b);
+}
 
-#endif
+void	ft_ss(t_stack *a, t_stack *b)
+{
+	ft_swap(a);
+	ft_swap(b);
+}
+
+void	ft_pa(t_stack *a, t_stack *b)
+{
+	ft_push(a, b);
+}
+
+void	ft_pb(t_stack *a, t_stack *b)
+{
+	ft_push(b, a);
+}

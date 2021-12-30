@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   macro.h                                            :+:      :+:    :+:   */
+/*   stack_utils.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/30 01:39:02 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/30 17:12:51 by iyamada          ###   ########.fr       */
+/*   Created: 2021/12/30 17:08:55 by iyamada           #+#    #+#             */
+/*   Updated: 2021/12/30 19:18:34 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MACRO_H
-# define MACRO_H
+#ifndef STACK_UTILS_H
+# define STACK_UTILS_H
 
-// error status
-# define ARG_ERROR 1
-# define MEM_ERROR 2
-# define SORT_ERROR 3
-# define OP_ERROR 3
+# include "t_stack.h"
+# include <stdbool.h>
 
-// swap_helper
-# define SECOND_TAIL -2
-# define TAIL -1
-# define SENTINEL 0
-# define HEAD 1
+bool	ft_is_sentinel(t_stack *bilist);
+bool	ft_is_size_one(t_stack *bilist);
+t_stack	*ft_get_element_at_index(t_stack *stack, int index);
 
 #endif

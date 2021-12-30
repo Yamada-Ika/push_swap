@@ -22,11 +22,8 @@ PUSH_SWAP_SRCS		:= $(addprefix $(PUSH_SWAP_DIR)/, $(PUSH_SWAP_SRCS))
 # checker
 CHECKER_NAME	:= checker
 CHECKER_DIR		:= checker_files
-CHECKER_SRCS	:= \
-bilist_utils.c        get_next_line_utils.c	\
-create_stack.c        main.c				\
-get_next_line.c       order.c
-CHECKER_SRCS	:= $(addprefix $(CHECKER_DIR)/, $(CHECKER_SRCS))
+CHECKER_SRCS	:= $(wildcard $(CHECKER_DIR)/*.c)
+# CHECKER_SRCS	:= $(addprefix $(CHECKER_DIR)/, $(CHECKER_SRCS))
 
 all: $(NAME)
 

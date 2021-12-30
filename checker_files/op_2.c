@@ -1,28 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   macro.h                                            :+:      :+:    :+:   */
+/*   op_2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/30 01:39:02 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/30 17:12:51 by iyamada          ###   ########.fr       */
+/*   Created: 2021/12/30 16:35:07 by iyamada           #+#    #+#             */
+/*   Updated: 2021/12/30 17:06:28 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MACRO_H
-# define MACRO_H
+#include "op_utils.h"
 
-// error status
-# define ARG_ERROR 1
-# define MEM_ERROR 2
-# define SORT_ERROR 3
-# define OP_ERROR 3
+void	ft_rb(t_stack *b)
+{
+	ft_rotate(b);
+}
 
-// swap_helper
-# define SECOND_TAIL -2
-# define TAIL -1
-# define SENTINEL 0
-# define HEAD 1
+void	ft_rr(t_stack *a, t_stack *b)
+{
+	ft_rotate(a);
+	ft_rotate(b);
+}
 
-#endif
+void	ft_rra(t_stack *a)
+{
+	ft_reverse_rotate(a);
+}
+
+void	ft_rrb(t_stack *b)
+{
+	ft_reverse_rotate(b);
+}
+
+void	ft_rrr(t_stack *a, t_stack *b)
+{
+	ft_reverse_rotate(a);
+	ft_reverse_rotate(b);
+}

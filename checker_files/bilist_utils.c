@@ -6,12 +6,12 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 01:59:37 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/30 02:03:34 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/30 17:14:11 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "t_stack.h"
-# include <string.h>
+#include "t_stack.h"
+#include <string.h>
 
 void	ft_add_bilist(t_stack *bilist_1, t_stack *bilist_2)
 {

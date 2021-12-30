@@ -6,13 +6,18 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 00:50:48 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/30 02:03:28 by iyamada          ###   ########.fr       */
+/*   Updated: 2021/12/30 18:57:23 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "create_stack.h"
+#include <string.h>
+#include <stdlib.h>
+#include "t_stack.h"
+#include "macro.h"
+#include "error.h"
+#include "bilist_utils.h"
 
-t_stack	*ft_new_bilist_sentinel(void)
+static t_stack	*ft_new_bilist_sentinel(void)
 {
 	t_stack	*sentinel;
 
@@ -25,7 +30,7 @@ t_stack	*ft_new_bilist_sentinel(void)
 	return (sentinel);
 }
 
-t_stack	*ft_new_bilist(int val)
+static t_stack	*ft_new_bilist(int val)
 {
 	t_stack	*new_bilist;
 
@@ -48,7 +53,11 @@ t_stack	*ft_new_stack(int	*arry, size_t size)
 	if (new_stack == NULL)
 		ft_error("Error", MEM_ERROR);
 	if (arry == NULL)
+	{
+		if (new_stack == NULL)
+			ft_error("Error", MEM_ERROR);
 		return (new_stack);
+	}
 	i = size - 1;
 	while (i >= 0)
 	{
