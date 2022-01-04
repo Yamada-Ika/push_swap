@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 16:30:18 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/30 17:12:35 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/04 15:26:27 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "macro.h"
 #include "error.h"
 
-static bool	ft_is_exist(int *arry, int size, long long val)
+static bool	ft_is_exist(long long *arry, int size, long long val)
 {
 	int	i;
 
@@ -30,13 +30,13 @@ static bool	ft_is_exist(int *arry, int size, long long val)
 
 static bool	ft_is_wrong_arry(int argc, char *argv[])
 {
-	int		*arry;
-	int		arry_size;
-	int		i;
-	char	*non_num;
+	long long	*arry;
+	int			arry_size;
+	int			i;
+	char		*non_num;
 
 	arry_size = argc - 1;
-	arry = (int *)malloc(arry_size * sizeof(long long));
+	arry = (long long *)malloc(arry_size * sizeof(long long));
 	i = 0;
 	while (i < arry_size)
 	{
