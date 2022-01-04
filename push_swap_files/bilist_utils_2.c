@@ -15,8 +15,6 @@
 
 t_stack	*ft_get_element_at_index(t_stack *stack, int index)
 {
-	t_stack	*sentinental_node;
-
 	if (index == TAIL)
 		return (stack->back);
 	if (index == SECOND_TAIL)

@@ -15,7 +15,7 @@
 
 static void	ft_join_a_helper(t_stack *a, t_stack *b, int min_val, int size)
 {
-	int		j;
+	int	j;
 
 	j = 0;
 	while (j < size && ft_is_val_in_stack(b, min_val))
@@ -40,9 +40,8 @@ static void	ft_join_a_helper(t_stack *a, t_stack *b, int min_val, int size)
 
 static void	ft_join_a(t_stack *a, t_stack *b, int min_val, int size)
 {
-	int		j;
-	int		tmp_size;
-	int		next_min_val;
+	int	tmp_size;
+	int	next_min_val;
 
 	tmp_size = size;
 	while (size-- > 0)

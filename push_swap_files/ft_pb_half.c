@@ -13,7 +13,7 @@
 #include "order.h"
 #include "sort_utils.h"
 
-static void	ft_sort_left_in_a(t_stack *a, t_stack *b, int a_size)
+static void	ft_sort_left_in_a(t_stack *a, int a_size)
 {
 	if (a_size == 1)
 		ft_ra(a);
@@ -45,7 +45,7 @@ void	ft_pb_half(t_stack *a, t_stack *b, int min_val, int max_val)
 
 	a_size = max_val - min_val + 1;
 	if (a_size <= 2)
-		return (ft_sort_left_in_a(a, b, a_size));
+		return (ft_sort_left_in_a(a, a_size));
 	pivot = (max_val - min_val) / 2 + min_val;
 	ra_cnt = 0;
 	while (a_size-- > 0)

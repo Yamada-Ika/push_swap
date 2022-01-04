@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 16:19:36 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/30 19:18:55 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/03 14:26:59 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ bool	ft_is_sorted(t_stack *bilist)
 
 t_stack	*ft_get_element_at_index(t_stack *stack, int index)
 {
-	t_stack	*sentinental_node;
-
 	if (index == TAIL)
 		return (stack->back);
 	if (index == SECOND_TAIL)

@@ -1,5 +1,5 @@
 CC			:= gcc
-CFLAGS		:= #-Wall -Wextra -Werror
+CFLAGS		:= -Wall -Wextra -Werror
 
 # libft
 LIBFT_DIR	:= libft
@@ -13,7 +13,7 @@ PUSH_SWAP_SRCS		:= \
 arg_utils.c              order_1.c	\
 array_utils.c            order_2.c	\
 bilist_utils_1.c         order_helper.c	\
-bilist_utils_2.c         push_swap.c	\
+bilist_utils_2.c         main.c	\
 bilist_utils_3.c         sort_small_stack_utils.c	\
 ft_pa_half.c      stack_utils.c	\
 ft_pb_half.c
@@ -23,7 +23,6 @@ PUSH_SWAP_SRCS		:= $(addprefix $(PUSH_SWAP_DIR)/, $(PUSH_SWAP_SRCS))
 CHECKER_NAME	:= checker
 CHECKER_DIR		:= checker_files
 CHECKER_SRCS	:= $(wildcard $(CHECKER_DIR)/*.c)
-# CHECKER_SRCS	:= $(addprefix $(CHECKER_DIR)/, $(CHECKER_SRCS))
 
 all: $(NAME)
 
