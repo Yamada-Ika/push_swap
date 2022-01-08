@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils.h                                      :+:      :+:    :+:   */
+/*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/26 16:12:44 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/08 13:12:33 by iyamada          ###   ########.fr       */
+/*   Created: 2022/01/08 12:30:07 by iyamada           #+#    #+#             */
+/*   Updated: 2022/01/08 12:31:13 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_UTILS_H
-# define STACK_UTILS_H
+#ifndef ERROR_H
+# define ERROR_H
 
-# include "stack.h"
+# define ARG_ERROR 1
+# define MEM_ERROR 2
 
-int		ft_get_stack_size(t_stack *stack);
+void	ft_error(char *fmt, int status);
 
 #endif

@@ -6,65 +6,12 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 04:47:10 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/26 16:57:03 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/08 13:06:52 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "order_helper.h"
-
-t_stack	*ft_new_bilist_sentinel(void)
-{
-	t_stack	*sentinel;
-
-	sentinel = (t_stack *)malloc(sizeof(t_stack));
-	if (sentinel == NULL)
-		return (NULL);
-	sentinel->front = sentinel;
-	sentinel->back = sentinel;
-	sentinel->val = -1;
-	return (sentinel);
-}
-
-t_stack	*ft_new_bilist(int val)
-{
-	t_stack	*new_bilist;
-
-	new_bilist = (t_stack *)malloc(sizeof(t_stack));
-	if (new_bilist == NULL)
-		return (NULL);
-	new_bilist->val = val;
-	new_bilist->front = NULL;
-	new_bilist->back = NULL;
-	return (new_bilist);
-}
-
-void	ft_add_bilist(t_stack *bilist_1, t_stack *bilist_2)
-{
-	t_stack	*prev_end_node;
-	t_stack	*sentinel_node;
-
-	sentinel_node = bilist_1;
-	if (bilist_1->front == bilist_1 && bilist_1->back == bilist_1)
-	{
-		sentinel_node->front = bilist_2;
-		sentinel_node->back = bilist_2;
-		bilist_2->front = sentinel_node;
-		bilist_2->back = sentinel_node;
-		return ;
-	}
-	prev_end_node = sentinel_node->back;
-	sentinel_node->back = bilist_2;
-	prev_end_node->front = bilist_2;
-	bilist_2->front = sentinel_node;
-	bilist_2->back = prev_end_node;
-}
-
-void	ft_del_bilist(t_stack **bilist)
-{
-	free(*bilist);
-	*bilist = NULL;
-}
 
 t_stack	*ft_pop_bilist(t_stack *bilist)
 {
@@ -78,4 +25,74 @@ t_stack	*ft_pop_bilist(t_stack *bilist)
 	second_from_end_node->front = bilist;
 	bilist->back = second_from_end_node;
 	return (end_node);
+}
+
+int	ft_get_min_val_from_stack(t_stack *bilist)
+{
+	int		index;
+	int		min_val;
+	t_stack	*sentinel;
+
+	sentinel = bilist;
+	index = 0;
+	min_val = INT_MAX;
+	while (true)
+	{
+		bilist = bilist->back;
+		if (bilist == sentinel)
+			break ;
+		if (min_val > bilist->val)
+			min_val = bilist->val;
+		index++;
+	}
+	return (min_val);
+}
+
+int	ft_get_min_val_at(t_stack *bilist)
+{
+	int		index;
+	int		min_val_index;
+	int		min_val;
+	t_stack	*dummy;
+
+	dummy = bilist;
+	index = 0;
+	min_val = INT_MAX;
+	while (true)
+	{
+		bilist = bilist->back;
+		if (bilist == dummy)
+			break ;
+		if (min_val > bilist->val)
+		{
+			min_val = bilist->val;
+			min_val_index = index;
+		}
+		index++;
+	}
+	return (min_val_index);
+}
+
+void	ft_pb_min_val(t_stack *a, t_stack *b)
+{
+	int	min_val_index;
+	int	a_size;
+	int	rra_cnt;
+	int	ra_cnt;
+
+	min_val_index = ft_get_min_val_at(a);
+	a_size = ft_get_stack_size(a);
+	if (min_val_index > a_size / 2)
+	{
+		rra_cnt = a_size - min_val_index;
+		while (rra_cnt-- > 0)
+			ft_rra(a);
+	}
+	else
+	{
+		ra_cnt = min_val_index;
+		while (ra_cnt-- > 0)
+			ft_ra(a);
+	}
+	ft_pb(a, b);
 }

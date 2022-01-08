@@ -1,20 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils.h                                      :+:      :+:    :+:   */
+/*   ft_delete_stack.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/26 16:12:44 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/08 13:12:33 by iyamada          ###   ########.fr       */
+/*   Created: 2022/01/08 12:51:36 by iyamada           #+#    #+#             */
+/*   Updated: 2022/01/08 12:54:50 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_UTILS_H
-# define STACK_UTILS_H
+#include "stack.h"
+#include "stdbool.h"
+#include <stdlib.h>
 
-# include "stack.h"
+static void	ft_del_bilist(t_stack **bilist)
+{
+	free(*bilist);
+	*bilist = NULL;
+}
 
-int		ft_get_stack_size(t_stack *stack);
+void	ft_delete_stack(t_stack *stack)
+{
+	t_stack	*dummy;
+	t_stack	*prev_stack;
 
-#endif
+	dummy = stack;
+	while (true)
+	{
+		prev_stack = stack;
+		stack = stack->front;
+		ft_del_bilist(&prev_stack);
+		if (stack == dummy)
+			break ;
+	}
+}

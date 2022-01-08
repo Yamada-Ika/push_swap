@@ -9,15 +9,7 @@ LIBFT_A		:= $(addprefix $(LIBFT_DIR)/, $(LIBFT_A))
 # push_swap
 NAME 				:= push_swap
 PUSH_SWAP_DIR		:= push_swap_files
-PUSH_SWAP_SRCS		:= \
-arg_utils.c              order_1.c	\
-array_utils.c            order_2.c	\
-bilist_utils_1.c         order_helper.c	\
-bilist_utils_2.c         main.c	\
-bilist_utils_3.c         sort_small_stack_utils.c	\
-ft_pa_half.c      stack_utils.c	\
-ft_pb_half.c
-PUSH_SWAP_SRCS		:= $(addprefix $(PUSH_SWAP_DIR)/, $(PUSH_SWAP_SRCS))
+PUSH_SWAP_SRCS		:= $(wildcard $(PUSH_SWAP_DIR)/*.c)
 
 # checker
 CHECKER_NAME	:= checker

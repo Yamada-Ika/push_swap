@@ -6,11 +6,13 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 04:14:08 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/26 05:08:44 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/08 13:24:28 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "order_helper.h"
+
+void	ft_add_bilist(t_stack *bilist_1, t_stack *bilist_2);
 
 void	ft_push(t_stack *stack_1, t_stack *stack_2)
 {
@@ -20,7 +22,7 @@ void	ft_push(t_stack *stack_1, t_stack *stack_2)
 	ft_add_bilist(stack_1, popped_element);
 }
 
-void	ft_swap_helper(t_stack *stack, int index_1, int index_2)
+static void	ft_swap_helper(t_stack *stack, int index_1, int index_2)
 {
 	t_stack	*element_1;
 	t_stack	*element_2;

@@ -1,16 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*   ft_new_stack.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/26 04:42:33 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/29 22:43:34 by iyamada          ###   ########.fr       */
+/*   Created: 2022/01/08 11:44:33 by iyamada           #+#    #+#             */
+/*   Updated: 2022/01/08 13:20:47 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack_utils.h"
+// stack struct
+#include "stack.h"
+// malloc
+#include "stdlib.h"
+// error
+#include "error.h"
+
+void	ft_add_bilist(t_stack *bilist_1, t_stack *bilist_2);
+
+static t_stack	*ft_new_bilist_sentinel(void)
+{
+	t_stack	*sentinel;
+
+	sentinel = (t_stack *)malloc(sizeof(t_stack));
+	if (sentinel == NULL)
+		return (NULL);
+	sentinel->front = sentinel;
+	sentinel->back = sentinel;
+	sentinel->val = -1;
+	return (sentinel);
+}
+
+static t_stack	*ft_new_bilist(int val)
+{
+	t_stack	*new_bilist;
+
+	new_bilist = (t_stack *)malloc(sizeof(t_stack));
+	if (new_bilist == NULL)
+		return (NULL);
+	new_bilist->val = val;
+	new_bilist->front = NULL;
+	new_bilist->back = NULL;
+	return (new_bilist);
+}
 
 t_stack	*ft_new_stack(int	*arry, size_t size)
 {
@@ -35,37 +68,4 @@ t_stack	*ft_new_stack(int	*arry, size_t size)
 		i--;
 	}
 	return (new_stack);
-}
-
-int	ft_get_stack_size(t_stack *stack)
-{
-	t_stack	*dummy;
-	int		size;
-
-	dummy = stack;
-	size = 0;
-	while (true)
-	{
-		stack = stack->front;
-		if (stack == dummy)
-			break ;
-		size++;
-	}
-	return (size);
-}
-
-void	ft_delete_stack(t_stack *stack)
-{
-	t_stack	*dummy;
-	t_stack	*prev_stack;
-
-	dummy = stack;
-	while (true)
-	{
-		prev_stack = stack;
-		stack = stack->front;
-		ft_del_bilist(&prev_stack);
-		if (stack == dummy)
-			break ;
-	}
 }

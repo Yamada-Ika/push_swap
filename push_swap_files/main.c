@@ -6,17 +6,11 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:06 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/04 12:18:58 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/08 13:27:47 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_error(char *fmt, int status)
-{
-	ft_putendl_fd(fmt, STDERR_FILENO);
-	exit(status);
-}
 
 static void	push_swap(t_stack *a, t_stack *b)
 {

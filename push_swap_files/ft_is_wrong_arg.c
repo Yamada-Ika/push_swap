@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arg_utils.c                                        :+:      :+:    :+:   */
+/*   ft_is_wrong_arg.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:13:56 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/04 15:25:47 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/08 12:58:21 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include <stdbool.h>
+#include "../libft/libft.h"
 
 static bool	ft_is_exist(long long *arry, int size, long long val)
 {

@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils.h                                      :+:      :+:    :+:   */
+/*   ft_get_stack_size.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/26 16:12:44 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/08 13:12:33 by iyamada          ###   ########.fr       */
+/*   Created: 2021/12/26 04:42:33 by iyamada           #+#    #+#             */
+/*   Updated: 2022/01/08 13:14:01 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_UTILS_H
-# define STACK_UTILS_H
+#include "stack.h"
+#include <stdbool.h>
 
-# include "stack.h"
+int	ft_get_stack_size(t_stack *stack)
+{
+	t_stack	*dummy;
+	int		size;
 
-int		ft_get_stack_size(t_stack *stack);
-
-#endif
+	dummy = stack;
+	size = 0;
+	while (true)
+	{
+		stack = stack->front;
+		if (stack == dummy)
+			break ;
+		size++;
+	}
+	return (size);
+}
