@@ -6,14 +6,14 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 18:48:04 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/30 19:22:04 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/10 00:47:01 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STACK_H
 # define STACK_H
 
-# include "../libft/libft.h"
+# include "libft.h"
 # include "t_stack.h"
 
 #endif

@@ -6,11 +6,16 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:06 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/08 13:27:47 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/09 23:54:28 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+__attribute__((destructor))void	ft_leak(void)
+{
+	system("leaks push_swap");
+}
 
 static void	push_swap(t_stack *a, t_stack *b)
 {
@@ -40,7 +45,7 @@ int	main(int argc, char *argv[])
 
 	if (argc == 1)
 		return (0);
-	if (ft_is_wrong_arg(argc, argv))
+	if (ft_is_wrong_arry(argc, argv))
 		ft_error("Error", ARG_ERROR);
 	arry = ft_get_arry_from_arg(argc, argv);
 	if (arry == NULL)
@@ -49,6 +54,7 @@ int	main(int argc, char *argv[])
 	ft_arry_compress(arry, size);
 	a = ft_new_stack(arry, size);
 	b = ft_new_stack(NULL, 0);
+	free(arry);
 	push_swap(a, b);
 	ft_delete_stack(a);
 	ft_delete_stack(b);

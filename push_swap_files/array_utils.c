@@ -12,20 +12,20 @@
 
 #include "push_swap.h"
 
-int	*ft_get_arry_from_arg(int argc, char *argv[])
+int	*ft_get_arry_from_arg(int n, char **strs)
 {
 	int		*arry;
 	int		size;
 	int		i;
 
-	size = argc - 1;
+	size = n - 1;
 	arry = (int *)malloc(size * sizeof(int));
 	if (arry == NULL)
 		return (NULL);
 	i = 0;
 	while (i < size)
 	{
-		arry[i] = ft_atoi(argv[i + 1]);
+		arry[i] = ft_atoi(strs[i + 1]);
 		i++;
 	}
 	return (arry);

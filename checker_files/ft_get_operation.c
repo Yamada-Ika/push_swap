@@ -6,14 +6,14 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 16:45:08 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/30 19:09:51 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/10 00:46:56 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "op.h"
 #include "macro.h"
 #include "error.h"
-#include "../libft/libft.h"
+#include "libft.h"
 #include "get_next_line.h"
 
 static void	ft_get_operation_helper(t_stack *a, t_stack *b, char *op)

@@ -6,11 +6,11 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 16:30:18 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/04 15:26:27 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/10 00:46:39 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "libft.h"
 #include "macro.h"
 #include "error.h"
 

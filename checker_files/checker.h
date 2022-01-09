@@ -6,14 +6,14 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 18:29:17 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/30 18:50:42 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/10 00:46:48 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
 
-# include "../libft/libft.h"
+# include "libft.h"
 # include "macro.h"
 # include "error.h"
 # include "t_stack.h"
