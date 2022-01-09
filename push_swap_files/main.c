@@ -6,16 +6,11 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:06 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/09 23:54:28 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/10 01:26:11 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-__attribute__((destructor))void	ft_leak(void)
-{
-	system("leaks push_swap");
-}
 
 static void	push_swap(t_stack *a, t_stack *b)
 {

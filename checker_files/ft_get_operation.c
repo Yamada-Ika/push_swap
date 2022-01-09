@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 16:45:08 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/10 00:46:56 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/10 01:15:50 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "libft.h"
 #include "get_next_line.h"
 
-static void	ft_get_operation_helper(t_stack *a, t_stack *b, char *op)
+static bool	ft_get_operation_helper(t_stack *a, t_stack *b, char *op)
 {
 	if (ft_strcmp(op, "sa\n") == 0)
 		ft_sa(a);
@@ -41,7 +41,8 @@ static void	ft_get_operation_helper(t_stack *a, t_stack *b, char *op)
 	else if (ft_strcmp(op, "rrr\n") == 0)
 		ft_rrr(a, b);
 	else
-		ft_error("Error", OP_ERROR);
+		return (false);
+	return (true);
 }
 
 void	ft_get_operation(t_stack *a, t_stack *b)
@@ -53,7 +54,8 @@ void	ft_get_operation(t_stack *a, t_stack *b)
 		op = get_next_line(STDIN_FILENO);
 		if (op == NULL)
 			return ;
-		ft_get_operation_helper(a, b, op);
+		if (!ft_get_operation_helper(a, b, op))
+			ft_error("Error", OP_ERROR);
 		free(op);
 	}
 }

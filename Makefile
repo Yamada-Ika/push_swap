@@ -21,8 +21,15 @@ PUSH_SWAP_OBJS	:= $(addprefix $(PUSH_SWAP_DIR)/out/, $(PUSH_SWAP_OBJS))
 # checker
 CHECKER_NAME	:= checker
 CHECKER_DIR		:= checker_files
-CHECKER_SRCS	:= $(wildcard $(CHECKER_DIR)/*.c)
+CHECKER_SRCS	:= \
+arg_utils.c           ft_get_operation.c    op_2.c			\
+bilist_utils.c        get_next_line.c       op_3.c			\
+create_stack.c        get_next_line_utils.c op_utils.c		\
+error.c               main.c                stack_utils.c	\
+ft_delete_stack.c     op_1.c
 CHECKER_OBJS	:= $(CHECKER_SRCS:%.c=%.o)
+CHECKER_SRCS	:= $(addprefix $(CHECKER_DIR)/, $(CHECKER_SRCS))
+CHECKER_OBJS	:= $(addprefix $(CHECKER_DIR)/out/, $(CHECKER_OBJS))
 
 all: $(NAME)
 
@@ -36,6 +43,9 @@ empty:
 
 $(PUSH_SWAP_DIR)/out/%.o: $(PUSH_SWAP_DIR)/%.c
 	$(CC) $(CFLAGS) -o $@ -c $^ -I$(PUSH_SWAP_DIR)/include -I$(LIBFT_DIR)
+
+$(CHECKER_DIR)/out/%.o: $(CHECKER_DIR)/%.c
+	$(CC) $(CFLAGS) -o $@ -c $^ -I$(CHECKER_DIR)/include -I$(LIBFT_DIR)
 
 bonus: $(CHECKER_NAME)
 

@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 16:30:18 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/10 00:46:39 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/10 01:10:55 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,36 +28,32 @@ static bool	ft_is_exist(long long *arry, int size, long long val)
 	return (false);
 }
 
-static bool	ft_is_wrong_arry(int argc, char *argv[])
+bool	ft_is_wrong_arry(int argc, char *argv[])
 {
 	long long	*arry;
 	int			arry_size;
 	int			i;
-	char		*non_num;
+	char		*end;
+	bool		is_wrong;
 
+	is_wrong = false;
 	arry_size = argc - 1;
 	arry = (long long *)malloc(arry_size * sizeof(long long));
 	i = 0;
 	while (i < arry_size)
 	{
-		if (ft_strcmp(argv[i + 1], "") == 0)
-			return (true);
-		arry[i] = ft_strtoll(argv[i + 1], &non_num, 10);
-		if (ft_strcmp(non_num, "") || arry[i] > INT_MAX || arry[i] < INT_MIN)
-			return (true);
-		if (ft_is_exist(arry, i, arry[i]))
-			return (true);
+		arry[i] = ft_strtoll(argv[i + 1], &end, 10);
+		if (ft_strcmp(argv[i + 1], "\0") == 0 || ft_strcmp(end, "") != 0
+			|| arry[i] > INT_MAX || arry[i] < INT_MIN
+			|| ft_is_exist(arry, i, arry[i]))
+		{
+			is_wrong = true;
+			break ;
+		}
 		i++;
 	}
 	free(arry);
-	return (false);
-}
-
-bool	ft_is_wrong_arg(int argc, char *argv[])
-{
-	if (ft_is_wrong_arry(argc, argv))
-		return (true);
-	return (false);
+	return (is_wrong);
 }
 
 int	*ft_get_arry_from_arg(int argc, char *argv[])
@@ -69,7 +65,7 @@ int	*ft_get_arry_from_arg(int argc, char *argv[])
 	size = argc - 1;
 	arry = (int *)malloc(size * sizeof(int));
 	if (arry == NULL)
-		ft_error("Error", MEM_ERROR);
+		return (NULL);
 	i = 0;
 	while (i < size)
 	{
