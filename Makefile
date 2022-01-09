@@ -9,8 +9,14 @@ LIBFT_A			:= $(addprefix $(LIBFT_DIR)/, $(LIBFT_A))
 # push_swap
 NAME 			:= push_swap
 PUSH_SWAP_DIR	:= push_swap_files
-PUSH_SWAP_SRCS	:= $(wildcard $(PUSH_SWAP_DIR)/*.c)
+PUSH_SWAP_SRCS	:= \
+array_utils.c            ft_delete_stack.c        ft_new_stack.c           order_1.c				\
+bilist_utils_1.c         ft_error.c               ft_pa_half.c             order_2.c				\
+bilist_utils_2.c         ft_get_stack_size.c      ft_pb_half.c             order_helper.c			\
+ft_add_bilist.c          ft_is_wrong_arg.c        main.c                   sort_small_stack_utils.c
 PUSH_SWAP_OBJS	:= $(PUSH_SWAP_SRCS:%.c=%.o)
+PUSH_SWAP_SRCS	:= $(addprefix $(PUSH_SWAP_DIR)/, $(PUSH_SWAP_SRCS))
+PUSH_SWAP_OBJS	:= $(addprefix $(PUSH_SWAP_DIR)/out/, $(PUSH_SWAP_OBJS))
 
 # checker
 CHECKER_NAME	:= checker
@@ -27,6 +33,9 @@ $(LIBFT_A): empty
 	make -C $(LIBFT_DIR)
 
 empty:
+
+$(PUSH_SWAP_DIR)/out/%.o: $(PUSH_SWAP_DIR)/%.c
+	$(CC) $(CFLAGS) -o $@ -c $^ -I$(PUSH_SWAP_DIR)/include -I$(LIBFT_DIR)
 
 bonus: $(CHECKER_NAME)
 
