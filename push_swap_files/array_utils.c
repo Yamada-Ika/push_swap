@@ -21,7 +21,7 @@ int	*ft_get_arry_from_arg(int argc, char *argv[])
 	size = argc - 1;
 	arry = (int *)malloc(size * sizeof(int));
 	if (arry == NULL)
-		ft_error("Error", MEM_ERROR);
+		return (NULL);
 	i = 0;
 	while (i < size)
 	{
