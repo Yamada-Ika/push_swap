@@ -10,10 +10,11 @@ LIBFT_A			:= $(addprefix $(LIBFT_DIR)/, $(LIBFT_A))
 NAME 			:= push_swap
 PUSH_SWAP_DIR	:= push_swap_files
 PUSH_SWAP_SRCS	:= \
-array_utils.c            ft_delete_stack.c        ft_new_stack.c           order_1.c				\
-bilist_utils_1.c         ft_error.c               ft_pa_half.c             order_2.c				\
-bilist_utils_2.c         ft_get_stack_size.c      ft_pb_half.c             order_helper.c			\
-ft_add_bilist.c          ft_is_wrong_arg.c        main.c                   sort_small_stack_utils.c
+bilist_utils_1.c         ft_error.c               main.c					\
+bilist_utils_2.c         ft_get_stack_size.c      order_1.c					\
+ft_add_bilist.c          ft_new_stack.c           order_2.c					\
+ft_arry_compress.c       ft_pa_half.c             order_helper.c			\
+ft_delete_stack.c        ft_pb_half.c             sort_small_stack_utils.c	
 PUSH_SWAP_OBJS	:= $(PUSH_SWAP_SRCS:%.c=%.o)
 PUSH_SWAP_SRCS	:= $(addprefix $(PUSH_SWAP_DIR)/, $(PUSH_SWAP_SRCS))
 PUSH_SWAP_OBJS	:= $(addprefix $(PUSH_SWAP_DIR)/out/, $(PUSH_SWAP_OBJS))
@@ -31,10 +32,18 @@ CHECKER_OBJS	:= $(CHECKER_SRCS:%.c=%.o)
 CHECKER_SRCS	:= $(addprefix $(CHECKER_DIR)/, $(CHECKER_SRCS))
 CHECKER_OBJS	:= $(addprefix $(CHECKER_DIR)/out/, $(CHECKER_OBJS))
 
+# utils
+UTILS_SRC	:= \
+	arry_utils.c           ft_get_arry_from_arg.c ft_is_wrong_arry.c
+# arry_utils.c           ft_get_arry_from_arg.c ft_is_wrong_arry.c
+UTILS_OBJS	:= $(UTILS_SRC:%.c=%.o)
+UTILS_SRCS	:= $(addprefix utils/, $(UTILS_SRC))
+UTILS_OBJS	:= $(addprefix utils/out/, $(UTILS_OBJS))
+
 all: $(NAME)
 
-$(NAME): $(LIBFT_A) $(PUSH_SWAP_OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(PUSH_SWAP_OBJS) $(LIBFT_A)
+$(NAME): $(LIBFT_A) $(PUSH_SWAP_OBJS) $(UTILS_OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(PUSH_SWAP_OBJS) $(UTILS_OBJS) $(LIBFT_A)
 
 $(LIBFT_A): empty
 	make -C $(LIBFT_DIR)
@@ -42,6 +51,9 @@ $(LIBFT_A): empty
 empty:
 
 $(PUSH_SWAP_DIR)/out/%.o: $(PUSH_SWAP_DIR)/%.c
+	$(CC) $(CFLAGS) -o $@ -c $^ -I$(PUSH_SWAP_DIR)/include -I$(LIBFT_DIR)
+
+utils/out/%.o: utils/%.c
 	$(CC) $(CFLAGS) -o $@ -c $^ -I$(PUSH_SWAP_DIR)/include -I$(LIBFT_DIR)
 
 $(CHECKER_DIR)/out/%.o: $(CHECKER_DIR)/%.c
@@ -61,4 +73,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re libft empty
+.PHONY: all clean fclean re empty
