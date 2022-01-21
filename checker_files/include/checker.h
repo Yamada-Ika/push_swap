@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 18:29:17 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/10 01:20:48 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/22 00:35:19 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@
 # include "error.h"
 # include "t_stack.h"
 
-// arg_utils.c
-bool	ft_is_wrong_arry(int argc, char *argv[]);
-int		*ft_get_arry_from_arg(int argc, char *argv[]);
+// utils/ft_is_wrong_arry.c
+bool	ft_is_wrong_arry(char *argv[]);
+
+// utils/ft_get_arry_from_arg.c
+int		*ft_get_arry_from_arg(char *argv[]);
 
 // error.c
 void	ft_error(char *fmt, int status);
@@ -35,5 +37,8 @@ void	ft_get_operation(t_stack *a, t_stack *b);
 
 // ft_delete_stack.c
 void	ft_delete_stack(t_stack *stack);
+
+// utils/arry_utils.c
+size_t	ft_get_size(char **argv);
 
 #endif
