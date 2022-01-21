@@ -23,19 +23,16 @@ PUSH_SWAP_OBJS	:= $(addprefix $(PUSH_SWAP_DIR)/out/, $(PUSH_SWAP_OBJS))
 CHECKER_NAME	:= checker
 CHECKER_DIR		:= checker_files
 CHECKER_SRCS	:= \
-arg_utils.c           ft_get_operation.c    op_2.c			\
-bilist_utils.c        get_next_line.c       op_3.c			\
-create_stack.c        get_next_line_utils.c op_utils.c		\
-error.c               main.c                stack_utils.c	\
-ft_delete_stack.c     op_1.c
+bilist_utils.c        ft_get_operation.c    op_1.c                stack_utils.c	\
+create_stack.c        get_next_line.c       op_2.c								\
+error.c               get_next_line_utils.c op_3.c								\
+ft_delete_stack.c     main.c                op_utils.c
 CHECKER_OBJS	:= $(CHECKER_SRCS:%.c=%.o)
 CHECKER_SRCS	:= $(addprefix $(CHECKER_DIR)/, $(CHECKER_SRCS))
 CHECKER_OBJS	:= $(addprefix $(CHECKER_DIR)/out/, $(CHECKER_OBJS))
 
 # utils
-UTILS_SRC	:= \
-	arry_utils.c           ft_get_arry_from_arg.c ft_is_wrong_arry.c
-# arry_utils.c           ft_get_arry_from_arg.c ft_is_wrong_arry.c
+UTILS_SRC	:= arry_utils.c ft_get_arry_from_arg.c ft_is_wrong_arry.c
 UTILS_OBJS	:= $(UTILS_SRC:%.c=%.o)
 UTILS_SRCS	:= $(addprefix utils/, $(UTILS_SRC))
 UTILS_OBJS	:= $(addprefix utils/out/, $(UTILS_OBJS))
@@ -61,11 +58,12 @@ $(CHECKER_DIR)/out/%.o: $(CHECKER_DIR)/%.c
 
 bonus: $(CHECKER_NAME)
 
-$(CHECKER_NAME): $(LIBFT_A) $(CHECKER_OBJS)
-	$(CC) $(CFLAGS) -o $(CHECKER_NAME) $(CHECKER_OBJS) $(LIBFT_A)
+$(CHECKER_NAME): $(LIBFT_A) $(CHECKER_OBJS) $(UTILS_OBJS)
+	$(CC) $(CFLAGS) -o $(CHECKER_NAME) $(CHECKER_OBJS) $(UTILS_OBJS) $(LIBFT_A)
 
 clean:
-	rm -rf $(PUSH_SWAP_OBJS) $(CHECKER_OBJS)
+	rm -rf $(PUSH_SWAP_OBJS) $(CHECKER_OBJS) $(UTILS_OBJS)
+	make -C $(LIBFT_DIR) clean
 
 fclean: clean
 	rm -rf $(NAME) $(CHECKER_NAME)
