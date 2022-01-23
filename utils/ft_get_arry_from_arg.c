@@ -6,11 +6,11 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 23:31:20 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/22 00:25:11 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/24 02:18:48 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "arry_utils.h"
 
 int	*ft_get_arry_from_arg(char **argv)
 {

@@ -6,14 +6,14 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 01:44:11 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/30 16:47:02 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/24 02:33:07 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OP_H
 # define OP_H
 
-# include "t_stack.h"
+# include "stack.h"
 
 void	ft_sa(t_stack *a);
 void	ft_sb(t_stack *b);

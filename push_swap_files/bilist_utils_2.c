@@ -13,29 +13,29 @@
 #include "push_swap.h"
 #include "order_helper.h"
 
-t_stack	*ft_get_element_at_index(t_stack *stack, int index)
-{
-	if (index == TAIL)
-		return (stack->back);
-	if (index == SECOND_TAIL)
-		return (stack->back->back);
-	if (index == SENTINEL)
-		return (stack);
-	if (index > 0)
-	{
-		while (index > 0)
-		{
-			stack = stack->front;
-			index--;
-		}
-	}
-	return (stack);
-}
+// t_stack	*ft_get_element_at_index(t_stack *stack, int index)
+// {
+// 	if (index == TAIL)
+// 		return (stack->back);
+// 	if (index == SECOND_TAIL)
+// 		return (stack->back->back);
+// 	if (index == SENTINEL)
+// 		return (stack);
+// 	if (index > 0)
+// 	{
+// 		while (index > 0)
+// 		{
+// 			stack = stack->front;
+// 			index--;
+// 		}
+// 	}
+// 	return (stack);
+// }
 
-bool	ft_is_sentinel(t_stack *bilist)
-{
-	return (bilist->front == bilist && bilist->back == bilist);
-}
+// bool	ft_is_sentinel(t_stack *bilist)
+// {
+// 	return (bilist->front == bilist && bilist->back == bilist);
+// }
 
 bool	ft_is_less_than_one_element(t_stack *bilist)
 {
@@ -59,22 +59,22 @@ bool	ft_is_val_in_stack(t_stack *stack, int val)
 	}
 }
 
-bool	ft_is_sorted(t_stack *bilist)
-{
-	t_stack	*dummy;
-	int		prev_val;
+// bool	ft_is_sorted(t_stack *bilist)
+// {
+// 	t_stack	*dummy;
+// 	int		prev_val;
 
-	dummy = bilist;
-	bilist = bilist->front;
-	prev_val = bilist->val;
-	while (true)
-	{
-		bilist = bilist->front;
-		if (dummy == bilist)
-			break ;
-		if (bilist->val > prev_val)
-			return (false);
-		prev_val = bilist->val;
-	}
-	return (true);
-}
+// 	dummy = bilist;
+// 	bilist = bilist->front;
+// 	prev_val = bilist->val;
+// 	while (true)
+// 	{
+// 		bilist = bilist->front;
+// 		if (dummy == bilist)
+// 			break ;
+// 		if (bilist->val > prev_val)
+// 			return (false);
+// 		prev_val = bilist->val;
+// 	}
+// 	return (true);
+// }

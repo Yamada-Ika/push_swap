@@ -6,13 +6,11 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 12:51:36 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/10 01:20:34 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/24 02:16:34 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
-#include <stdbool.h>
-#include <stdlib.h>
 
 static void	ft_del_bilist(t_stack **bilist)
 {

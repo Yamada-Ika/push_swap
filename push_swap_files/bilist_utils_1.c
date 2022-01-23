@@ -6,26 +6,26 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 04:47:10 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/08 13:06:52 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/24 02:47:25 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "order_helper.h"
 
-t_stack	*ft_pop_bilist(t_stack *bilist)
-{
-	t_stack	*end_node;
-	t_stack	*second_from_end_node;
+// t_stack	*ft_pop_bilist(t_stack *bilist)
+// {
+// 	t_stack	*end_node;
+// 	t_stack	*second_from_end_node;
 
-	if (bilist->front == bilist && bilist->back == bilist)
-		return (NULL);
-	end_node = bilist->back;
-	second_from_end_node = end_node->back;
-	second_from_end_node->front = bilist;
-	bilist->back = second_from_end_node;
-	return (end_node);
-}
+// 	if (bilist->front == bilist && bilist->back == bilist)
+// 		return (NULL);
+// 	end_node = bilist->back;
+// 	second_from_end_node = end_node->back;
+// 	second_from_end_node->front = bilist;
+// 	bilist->back = second_from_end_node;
+// 	return (end_node);
+// }
 
 int	ft_get_min_val_from_stack(t_stack *bilist)
 {

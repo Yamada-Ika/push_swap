@@ -6,11 +6,11 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:13:56 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/22 00:16:13 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/24 02:18:50 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "arry_utils.h"
 
 static bool	ft_is_exist(long long *arry, int size, long long val)
 {

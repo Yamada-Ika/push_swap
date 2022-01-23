@@ -6,13 +6,11 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 16:19:36 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/03 14:26:59 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/24 02:16:30 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "t_stack.h"
-#include "macro.h"
-#include <stdbool.h>
+#include "stack.h"
 
 int	ft_get_stack_size(t_stack *stack)
 {

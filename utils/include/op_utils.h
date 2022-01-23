@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_stack_size.c                                :+:      :+:    :+:   */
+/*   op_utils.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/26 04:42:33 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/08 13:14:01 by iyamada          ###   ########.fr       */
+/*   Created: 2021/12/30 17:04:35 by iyamada           #+#    #+#             */
+/*   Updated: 2022/01/24 02:29:07 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
-#include <stdbool.h>
+#ifndef OP_UTILS_H
+# define OP_UTILS_H
 
-int	ft_get_stack_size(t_stack *stack)
-{
-	t_stack	*dummy;
-	int		size;
+# include "stack.h"
 
-	dummy = stack;
-	size = 0;
-	while (true)
-	{
-		stack = stack->front;
-		if (stack == dummy)
-			break ;
-		size++;
-	}
-	return (size);
-}
+void	ft_swap(t_stack *stack);
+void	ft_push(t_stack *stack_1, t_stack *stack_2);
+void	ft_rotate(t_stack *stack);
+void	ft_reverse_rotate(t_stack *stack);
+
+#endif

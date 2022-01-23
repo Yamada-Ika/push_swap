@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 18:29:17 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/22 00:35:19 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/24 02:36:51 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 # include "libft.h"
 # include "macro.h"
-# include "error.h"
-# include "t_stack.h"
+# include "stack.h"
 
 // utils/ft_is_wrong_arry.c
 bool	ft_is_wrong_arry(char *argv[]);

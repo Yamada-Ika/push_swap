@@ -6,13 +6,12 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 16:45:08 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/10 01:15:50 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/24 02:35:34 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "op.h"
 #include "macro.h"
-#include "error.h"
 #include "libft.h"
 #include "get_next_line.h"
 

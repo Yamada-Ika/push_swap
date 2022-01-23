@@ -6,11 +6,11 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 23:33:14 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/22 00:16:33 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/24 02:18:25 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "arry_utils.h"
 
 void	ft_frees(char **strs)
 {

@@ -1,26 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   order_helper.c                                     :+:      :+:    :+:   */
+/*   op_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/26 04:14:08 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/08 13:24:28 by iyamada          ###   ########.fr       */
+/*   Created: 2021/12/30 16:37:39 by iyamada           #+#    #+#             */
+/*   Updated: 2022/01/24 02:32:23 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "order_helper.h"
-
-void	ft_add_bilist(t_stack *bilist_1, t_stack *bilist_2);
-
-void	ft_push(t_stack *stack_1, t_stack *stack_2)
-{
-	t_stack	*popped_element;
-
-	popped_element = ft_pop_bilist(stack_2);
-	ft_add_bilist(stack_1, popped_element);
-}
+#include "stack.h"
 
 static void	ft_swap_helper(t_stack *stack, int index_1, int index_2)
 {
@@ -28,7 +18,7 @@ static void	ft_swap_helper(t_stack *stack, int index_1, int index_2)
 	t_stack	*element_2;
 	t_stack	*front_element_2;
 
-	if (ft_is_sentinel(stack) || ft_is_less_than_one_element(stack))
+	if (ft_is_sentinel(stack) || ft_is_size_one(stack))
 		return ;
 	element_1 = ft_get_element_at_index(stack, index_1);
 	element_2 = ft_get_element_at_index(stack, index_2);
@@ -46,6 +36,11 @@ static void	ft_swap_helper(t_stack *stack, int index_1, int index_2)
 void	ft_swap(t_stack *stack)
 {
 	ft_swap_helper(stack, SECOND_TAIL, TAIL);
+}
+
+void	ft_push(t_stack *stack_1, t_stack *stack_2)
+{
+	ft_add_bilist(stack_1, ft_pop_bilist(stack_2));
 }
 
 void	ft_rotate(t_stack *stack)

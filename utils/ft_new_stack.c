@@ -5,19 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/08 11:44:33 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/08 13:20:47 by iyamada          ###   ########.fr       */
+/*   Created: 2021/12/30 00:50:48 by iyamada           #+#    #+#             */
+/*   Updated: 2022/01/24 02:16:25 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// stack struct
 #include "stack.h"
-// malloc
-#include "stdlib.h"
-// error
-#include "error.h"
-
-void	ft_add_bilist(t_stack *bilist_1, t_stack *bilist_2);
 
 static t_stack	*ft_new_bilist_sentinel(void)
 {
@@ -55,7 +48,11 @@ t_stack	*ft_new_stack(int	*arry, size_t size)
 	if (new_stack == NULL)
 		ft_error("Error", MEM_ERROR);
 	if (arry == NULL)
+	{
+		if (new_stack == NULL)
+			ft_error("Error", MEM_ERROR);
 		return (new_stack);
+	}
 	i = size - 1;
 	while (i >= 0)
 	{
