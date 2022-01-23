@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 04:05:13 by iyamada           #+#    #+#             */
-/*   Updated: 2021/12/30 00:26:05 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/24 01:22:38 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../libft/libft.h"
 
 void	ft_sa(t_stack *a);
+void	ft_sb(t_stack *b);
 void	ft_pa(t_stack *a, t_stack *b);
 void	ft_pb(t_stack *a, t_stack *b);
 void	ft_ra(t_stack *a);
