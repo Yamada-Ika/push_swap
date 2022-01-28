@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 04:39:11 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/24 01:21:52 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/28 23:52:41 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	ft_sa(t_stack *a)
 {
-	ft_putendl_fd("sa", STDOUT_FILENO);
+	ft_putstr_fd("sa\n", STDOUT_FILENO);
 	ft_swap(a);
 }
 

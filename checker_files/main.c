@@ -6,11 +6,14 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 00:40:35 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/22 00:32:26 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/28 22:30:57 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+#include <stdio.h>
+
 
 int	main(int argc, char *argv[])
 {
@@ -22,10 +25,16 @@ int	main(int argc, char *argv[])
 	if (argc == 1)
 		return (0);
 	if (ft_is_wrong_arry(argv))
+	{
+		fprintf(stderr, "here?\n");
 		ft_error("Error", ARG_ERROR);
+	}
 	arry = ft_get_arry_from_arg(argv);
 	if (arry == NULL)
+	{
+		fprintf(stderr, "here?\n");
 		ft_error("Error", MEM_ERROR);
+	}
 	size = ft_get_size(argv);;
 	a = ft_new_stack(arry, size);
 	b = ft_new_stack(NULL, 0);
