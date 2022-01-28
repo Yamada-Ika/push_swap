@@ -1,14 +1,14 @@
 #!/bin/bash
 
-ARG="25682 13601 6747"
-for i in {0..100}
-do
-	../push_swap 25682 13601 6747 | ../checker 25682 13601 6747
-	../push_swap $ARG | ../checker $ARG
-	# ../push_swap 25682 13601 6747 | ./checker_Mac 25682 13601 6747
-	# ../push_swap $ARG | ./checker_Mac $ARG
-done
-exit 0
+# ARG="25682 13601 6747"
+# for i in {0..100}
+# do
+# 	../push_swap 25682 13601 6747 | ../checker 25682 13601 6747
+# 	../push_swap $ARG | ../checker $ARG
+# 	# ../push_swap 25682 13601 6747 | ./checker_Mac 25682 13601 6747
+# 	# ../push_swap $ARG | ./checker_Mac $ARG
+# done
+# exit 0
 
 function CLEAN_TEST_DIR() {
 	rm -rf *.out *.diff
@@ -19,7 +19,6 @@ function TAKE_LOG_FAILE_TEST() {
 	result_file="$2"
 	expected_file="$3"
 	echo "KO case : $test_case"
-	# echo $result_file $expected_file
 	echo "===============================================================" >> faile.log
 	echo "test case : $test_case" >> faile.log
 	echo "------------------------- diff result -------------------------" >> faile.log
@@ -69,6 +68,7 @@ function NORMAL_TEST() {
 }
 
 rm -rf *.log
+CLEAN_TEST_DIR
 
 for i in `seq 1 100`
 do
@@ -80,12 +80,12 @@ do
 	NORMAL_TEST 1 5
 done
 
-# for i in `seq 1 100`
-# do
-# 	NORMAL_TEST 1 20
-# done
+for i in `seq 1 100`
+do
+	NORMAL_TEST 1 20
+done
 
-# for i in `seq 1 100`
-# do
-# 	NORMAL_TEST 1 100
-# done
+for i in `seq 1 100`
+do
+	NORMAL_TEST 1 100
+done

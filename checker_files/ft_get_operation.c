@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 16:45:08 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/28 23:52:35 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/29 00:01:45 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static bool	ft_get_operation_helper(t_stack *a, t_stack *b, char *op)
 		ft_rrr(a, b);
 	else
 	{
-		fprintf(stderr, "error op : %s", op);
+		// fprintf(stderr, "error op : %s", op);
 		return (false);
 	}
 	return (true);

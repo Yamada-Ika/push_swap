@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 00:40:35 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/28 22:30:57 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/29 00:01:22 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ int	main(int argc, char *argv[])
 		return (0);
 	if (ft_is_wrong_arry(argv))
 	{
-		fprintf(stderr, "here?\n");
+		// fprintf(stderr, "here?\n");
 		ft_error("Error", ARG_ERROR);
 	}
 	arry = ft_get_arry_from_arg(argv);
 	if (arry == NULL)
 	{
-		fprintf(stderr, "here?\n");
+		// fprintf(stderr, "here?\n");
 		ft_error("Error", MEM_ERROR);
 	}
 	size = ft_get_size(argv);;
