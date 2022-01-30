@@ -8,15 +8,16 @@ function TAKE_LOG_FAILE_TEST() {
 	test_case="$1"
 	result_file="$2"
 	expected_file="$3"
-	# echo "KO case : $test_case"
+	res_step="$4"
+	exp_step="$5"
 	echo "===============================================================" >> faile.log
 	echo "test case : $test_case" >> faile.log
-	echo "------------------------- diff result -------------------------" >> faile.log
-	diff -a -u $result_file $expected_file >> faile.log
 	echo "--------------------------- result ----------------------------" >> faile.log
 	cat $result_file >> faile.log
+	echo $res_step >> faile.log
 	echo "--------------------------- expect ----------------------------" >> faile.log
 	cat $expected_file >> faile.log
+	echo $exp_step >> faile.log
 	echo "===============================================================" >> faile.log
 }
 
@@ -41,7 +42,6 @@ function IS_SAME_FILE() {
 
 function TEST() {
 	ARG=$1
-	CLEAN_TEST_DIR
 	../push_swap $ARG 2> /dev/null | ../checker $ARG > result.out 2>&1
 	../push_swap $ARG 2> /dev/null | ./checker_Mac $ARG > expected.out 2>&1
 	IS_SAME_FILE result.out expected.out
@@ -51,25 +51,27 @@ function TEST() {
 		echo -e "\n\033[32mOK!\033[m"
 	else
 		echo -e "\n\033[31mKO!\033[m"
-		TAKE_LOG_FAILE_TEST "$ARG" result.out expected.out
-		# exit 0
+		TAKE_LOG_FAILE_TEST "$ARG" result.out expected.out "" ""
 	fi
 }
 
 function ORDER_STEP_TEST() {
 	ARG=$1
 	EXPECTED=$2
-	CLEAN_TEST_DIR
 	RES=$(../push_swap $ARG | wc -l)
+	echo $RES
 	if [ $RES -le $EXPECTED ]
 	then
 		echo -e "\n\033[32mORDER_STEP_TEST : $EXPECTED GREAT!\033[m\n"
 	else
 		echo -e "\n\033[31mORDER_STEP_TEST : $EXPECTED so so...\033[m\n"
+		TAKE_LOG_FAILE_TEST "$ARG" result.out expected.out "$RES" "$EXPECTED"
+		exit 0
 	fi
 }
 
 function NORMAL_TEST() {
+	CLEAN_TEST_DIR
 	min_val="$1"
 	max_val="$2"
 	ARG=$(for i in `seq $min_val $max_val`; do echo -n "$RANDOM "; done;)
@@ -121,24 +123,25 @@ TEST "5131' 4 8384352 3750\"5  316\"785 2'0 614 46\"1228 4' 8357 1101\" 4 416700
 TEST "0518726 701421' '030\"44 343\"077 5\"64583 8536888 7\"45632 103 1\"0 32855 6   0'351 0447813 8276665 6567012 426 3'1  85\"3'2 1 4366\" \"\"13488 4\"73064  22551' 1\"'\"201"
 TEST "2700475  875721 56635 2 7'2\"702 3464\"40 1 1 ' 8 1536\"64 '16'608  \"  373 31216\"5 7220''  274 4\"0 132 '2  5  155' 74'5203 '251481  55\"272 41'1603 717 610 ''03'23"
 
-for i in `seq 1 100`
-do
-	NORMAL_TEST 1 3
-done
+# for i in `seq 1 100`
+# do
+# 	NORMAL_TEST 1 3
+# done
 
-for i in `seq 1 100`
-do
-	NORMAL_TEST 1 5
-done
-
-for i in `seq 1 100`
-do
-	NORMAL_TEST 1 20
-done
+# for i in `seq 1 100`
+# do
+# 	NORMAL_TEST 1 5
+# done
 
 for i in `seq 1 100`
 do
 	NORMAL_TEST 1 100
 done
 
+# for i in `seq 1 100`
+# do
+# 	NORMAL_TEST 1 500
+# done
+
 unset error_case
+CLEAN_TEST_DIR
