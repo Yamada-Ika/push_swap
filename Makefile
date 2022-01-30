@@ -73,4 +73,10 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re empty
+func:
+	@nm -u push_swap | sed 's/^_//' | sort | grep -v dyld_stub_binder > tmp
+	@nm -u checker | sed 's/^_//' | sort | grep -v dyld_stub_binder >> tmp
+	@cat tmp | sort | uniq
+	@rm -rf tmp
+
+.PHONY: all clean fclean re empty func
