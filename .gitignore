@@ -7,3 +7,4 @@ push_swap
 .vscode
 *.o
 .DS_Store
+tmp
