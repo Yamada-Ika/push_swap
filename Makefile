@@ -79,4 +79,9 @@ func:
 	@cat tmp | sort | uniq
 	@rm -rf tmp
 
-.PHONY: all clean fclean re empty func
+test:
+	@make all
+	@make checker
+	@.push_swap_tester/run_test.sh
+
+.PHONY: all clean fclean re empty func test
