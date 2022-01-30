@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 00:40:35 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/29 00:17:21 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/30 15:48:54 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char *argv[])
 	arry = ft_get_arry_from_arg(argv);
 	if (arry == NULL)
 		ft_error("Error", MEM_ERROR);
-	size = ft_get_size(argv);;
+	size = ft_get_size(argv);
 	a = ft_new_stack(arry, size);
 	b = ft_new_stack(NULL, 0);
 	free(arry);

@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 16:45:08 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/29 00:01:45 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/30 15:48:21 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,8 @@
 #include "libft.h"
 #include "get_next_line.h"
 
-#include <stdio.h>
-
-
 static bool	ft_get_operation_helper(t_stack *a, t_stack *b, char *op)
 {
-	// if (ft_strcmp(op, "sa\n") == 0 || ft_strcmp(op, "sa") == 0)
 	if (ft_strcmp(op, "sa\n") == 0)
 		ft_sa(a);
 	else if (ft_strcmp(op, "sb\n") == 0)
@@ -44,10 +40,7 @@ static bool	ft_get_operation_helper(t_stack *a, t_stack *b, char *op)
 	else if (ft_strcmp(op, "rrr\n") == 0)
 		ft_rrr(a, b);
 	else
-	{
-		// fprintf(stderr, "error op : %s", op);
 		return (false);
-	}
 	return (true);
 }
 
