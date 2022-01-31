@@ -76,7 +76,10 @@ void	ft_arry_compress(int *arry, int size)
 
 	sorted_arry = ft_copy_arry(arry, size);
 	if (sorted_arry == NULL)
-		ft_error("Error", MEM_ERROR);
+	{
+		ft_error("Error");
+		exit(1);
+	}
 	ft_sort_ascending_order(sorted_arry, size);
 	i = 0;
 	while (i < size)
