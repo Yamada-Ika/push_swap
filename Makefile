@@ -38,6 +38,12 @@ UTILS_OBJS	:= $(UTILS_SRC:%.c=%.o)
 UTILS_SRCS	:= $(addprefix utils/, $(UTILS_SRC))
 UTILS_OBJS	:= $(addprefix utils/out/, $(UTILS_OBJS))
 
+# for memory leaks check
+ifdef LEAK_CHECK
+UTILS_SRCS	+= utils/check_leak.c
+UTILS_OBJS	+= utils/out/check_leak.o
+endif
+
 all: $(NAME)
 
 $(NAME): $(LIBFT_A) $(PUSH_SWAP_OBJS) $(UTILS_OBJS)
@@ -53,7 +59,6 @@ $(PUSH_SWAP_DIR)/out/%.o: $(PUSH_SWAP_DIR)/%.c
 
 utils/out/%.o: utils/%.c
 	$(CC) $(CFLAGS) -o $@ -c $^ -Ilibft -Iutils/include
-	# $(CC) $(CFLAGS) -o $@ -c $^ -Ilibft -Iutils/include -Ipush_swap_files/include
 
 $(CHECKER_DIR)/out/%.o: $(CHECKER_DIR)/%.c
 	$(CC) $(CFLAGS) -o $@ -c $^ -Ichecker_files/include -Ilibft -Iutils/include
@@ -74,14 +79,19 @@ fclean: clean
 re: fclean all
 
 func:
-	@nm -u push_swap | sed 's/^_//' | sort | grep -v dyld_stub_binder > tmp
-	@nm -u checker | sed 's/^_//' | sort | grep -v dyld_stub_binder >> tmp
-	@cat tmp | sort | uniq
-	@rm -rf tmp
+	nm -u push_swap | sed 's/^_//' | sort | grep -v dyld_stub_binder > tmp
+	nm -u checker | sed 's/^_//' | sort | grep -v dyld_stub_binder >> tmp
+	cat tmp | sort | uniq
+	rm -rf tmp
 
 test:
-	@make all
-	@make checker
-	@.push_swap_tester/run_test.sh
+	make all
+	make checker
+	.push_swap_tester/run_test.sh
+
+leak:
+	touch utils/check_leak.c
+	make LEAK_CHECK=1
+	make checker LEAK_CHECK=1
 
 .PHONY: all clean fclean re empty func test
