@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:06 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/31 15:48:01 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/31 16:13:16 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int	main(int argc, char *argv[])
 	ft_arry_compress(arry, size);
 	a = ft_new_stack(arry, size);
 	b = ft_new_stack(NULL, 0);
+	if (a == NULL || b == NULL)
+		return (ft_error("Error"));
 	free(arry);
 	push_swap(a, b);
 	ft_delete_stack(a);

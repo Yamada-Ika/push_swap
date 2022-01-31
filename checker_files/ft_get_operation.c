@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 16:45:08 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/30 15:48:21 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/31 16:19:13 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,12 @@ void	ft_get_operation(t_stack *a, t_stack *b)
 		if (op == NULL)
 			return ;
 		if (!ft_get_operation_helper(a, b, op))
-			ft_error("Error", OP_ERROR);
+			break ;
 		free(op);
 	}
+	free(op);
+	ft_delete_stack(a);
+	ft_delete_stack(b);
+	ft_error("Error");
+	exit(1);
 }
