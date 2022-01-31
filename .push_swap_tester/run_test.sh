@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function CLEAN_TEST_DIR() {
-	rm -rf *.out *.diff
+	rm -rf .push_swap_tester/*.out .push_swap_tester/*.diff
 }
 
 function TAKE_LOG_FAILE_TEST() {
@@ -10,28 +10,28 @@ function TAKE_LOG_FAILE_TEST() {
 	expected_file="$3"
 	res_step="$4"
 	exp_step="$5"
-	echo "===============================================================" >> faile.log
-	echo "test case : $test_case" >> faile.log
-	echo "--------------------------- result ----------------------------" >> faile.log
-	cat $result_file >> faile.log
-	echo $res_step >> faile.log
-	echo "--------------------------- expect ----------------------------" >> faile.log
-	cat $expected_file >> faile.log
-	echo $exp_step >> faile.log
-	echo "===============================================================" >> faile.log
+	echo "===============================================================" >> .push_swap_tester/faile.log
+	echo "test case : $test_case" >> .push_swap_tester/faile.log
+	echo "--------------------------- result ----------------------------" >> .push_swap_tester/faile.log
+	cat $result_file >> .push_swap_tester/faile.log
+	echo $res_step >> .push_swap_tester/faile.log
+	echo "--------------------------- expect ----------------------------" >> .push_swap_tester/faile.log
+	cat $expected_file >> .push_swap_tester/faile.log
+	echo $exp_step >> .push_swap_tester/faile.log
+	echo "===============================================================" >> .push_swap_tester/faile.log
 }
 
 function IS_SAME_FILE() {
 	file_1="$1"
 	file_2="$2"
-	diff $file_1 $file_2 > out.diff
+	diff $file_1 $file_2 > .push_swap_tester/out.diff
 	content_file_1=$(cat $file_1)
 	content_file_2=$(cat $file_2)
-	if [ $content_file_1 = "Error" ] && [ $content_file_2 = "Error" ]
+	if [ "$content_file_1" = "Error" ] && [ "$content_file_2" = "Error" ]
 	then
 		export error_case=1
 	fi
-	size=$(ls -l out.diff | awk '{print $5}')
+	size=$(ls -l .push_swap_tester/out.diff | awk '{print $5}')
 	if [ $size -eq 0 ]
 	then
 		return 0
@@ -42,33 +42,48 @@ function IS_SAME_FILE() {
 
 function TEST() {
 	ARG=$1
-	../push_swap $ARG 2> /dev/null | ../checker $ARG > result.out 2>&1
-	../push_swap $ARG 2> /dev/null | ./checker_Mac $ARG > expected.out 2>&1
-	IS_SAME_FILE result.out expected.out
+	./push_swap $ARG 2> /dev/null | ./checker $ARG > .push_swap_tester/result.out 2>&1
+	./push_swap $ARG 2> /dev/null | .push_swap_tester/checker_Mac $ARG > .push_swap_tester/expected.out 2>&1
+	IS_SAME_FILE .push_swap_tester/result.out .push_swap_tester/expected.out
 	echo "case : $ARG"
 	if [ $? -eq 0 ]
 	then
 		echo -e "\n\033[32mOK!\033[m"
 	else
 		echo -e "\n\033[31mKO!\033[m"
-		TAKE_LOG_FAILE_TEST "$ARG" result.out expected.out "" ""
+		TAKE_LOG_FAILE_TEST "$ARG" .push_swap_tester/result.out .push_swap_tester/expected.out "" ""
 	fi
 }
 
 function ORDER_STEP_TEST() {
 	ARG=$1
 	EXPECTED=$2
-	RES=$(../push_swap $ARG | wc -l)
+	RES=$(./push_swap $ARG | wc -l)
 	echo $RES
 	if [ $RES -le $EXPECTED ]
 	then
 		echo -e "\n\033[32mORDER_STEP_TEST : $EXPECTED GREAT!\033[m\n"
 	else
 		echo -e "\n\033[31mORDER_STEP_TEST : $EXPECTED so so...\033[m\n"
-		TAKE_LOG_FAILE_TEST "$ARG" result.out expected.out "$RES" "$EXPECTED"
+		TAKE_LOG_FAILE_TEST "$ARG" .push_swap_tester/result.out .push_swap_tester/expected.out "$RES" "$EXPECTED"
 		exit 0
 	fi
 }
+
+# function LEAK_TEST() {
+# 	ARG=$1
+# 	push_swap_leaks="$(../push_swap $ARG 2>&1 | grep "total leaked bytes." | awk '{print $3}')"
+# 	checker_leaks="$(../push_swap $ARG 2> /dev/null | ../checker $ARG 2>&1 | grep "total leaked bytes." | awk '{print $3}')"
+# 	echo "leak : $push_swap_leaks" "$checker_leaks"
+# 	echo "case : $ARG"
+# 	if [ $push_swap_leaks -eq 0 ] && [ $checker_leaks -eq 0 ]
+# 	then
+# 		echo -e "\n\033[32mLEAK TEST OK!\033[m"
+# 	else
+# 		echo -e "\n\033[31mKO!\033[m"
+# 		exit 0
+# 	fi
+# }
 
 function NORMAL_TEST() {
 	CLEAN_TEST_DIR
@@ -77,6 +92,7 @@ function NORMAL_TEST() {
 	ARG=$(for i in `seq $min_val $max_val`; do echo -n "$RANDOM "; done;)
 	export error_case=0
 	TEST "$ARG"
+	# LEAK_TEST "$ARG"
 	if [ $error_case -eq 1 ]
 	then
 		return 0
@@ -99,7 +115,7 @@ function NORMAL_TEST() {
 	fi
 }
 
-rm -rf *.log
+rm -rf .push_swap_tester/*.log
 CLEAN_TEST_DIR
 
 # faile case
