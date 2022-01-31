@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:13:56 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/24 02:18:50 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/31 15:43:02 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,11 @@ bool	ft_is_wrong_arry(char **argv)
 	{
 		strs = ft_split2(argv[j], ' ');
 		if (_ft_is_wrong_arry_helper(strs, &i, arry))
+		{
+			ft_frees(strs);
+			free(arry);
 			return (true);
+		}
 		ft_frees(strs);
 		j++;
 	}

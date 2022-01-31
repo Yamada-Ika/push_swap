@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 18:29:17 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/28 22:30:51 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/31 15:48:57 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ bool	ft_is_wrong_arry(char *argv[]);
 int		*ft_get_arry_from_arg(char *argv[]);
 
 // error.c
-void	ft_error(char *fmt, int status);
+int		ft_error(char *message);
 
 // create_stack.c
 t_stack	*ft_new_stack(int	*arry, size_t size);

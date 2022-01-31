@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 16:11:23 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/10 00:46:52 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/31 15:47:26 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_error(char *fmt, int status)
+int	ft_error(char *message)
 {
-	ft_putendl_fd(fmt, STDERR_FILENO);
-	exit(status);
+	ft_putendl_fd(message, STDERR_FILENO);
+	return (1);
 }

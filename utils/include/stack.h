@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 00:15:28 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/24 02:13:07 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/31 15:50:32 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,6 @@ bool	ft_is_sentinel(t_stack *bilist);
 bool	ft_is_size_one(t_stack *bilist);
 
 // utils/error.c
-void	ft_error(char *fmt, int status);
+int		ft_error(char *message);
 
 #endif

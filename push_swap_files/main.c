@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 11:19:06 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/22 00:30:20 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/01/31 15:48:01 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ int	main(int argc, char *argv[])
 	if (argc == 1)
 		return (0);
 	if (ft_is_wrong_arry(argv))
-		ft_error("Error", ARG_ERROR);
+		return (ft_error("Error"));
 	arry = ft_get_arry_from_arg(argv);
 	if (arry == NULL)
-		ft_error("Error", MEM_ERROR);
+		return (ft_error("Error"));
 	size = ft_get_size(argv);
 	ft_arry_compress(arry, size);
 	a = ft_new_stack(arry, size);
