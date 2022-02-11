@@ -10,10 +10,9 @@ LIBFT_A			:= $(addprefix $(LIBFT_DIR)/, $(LIBFT_A))
 NAME 			:= push_swap
 PUSH_SWAP_DIR	:= push_swap_files
 PUSH_SWAP_SRCS	:= \
-ft_arry_compress.c       order_1.c					\
-ft_pa_half.c             order_2.c					\
-ft_pb_half.c             sort_small_stack_utils.c	\
-main.c                   stack_utils.c
+ft_arry_compress.c       main.c                   order_list.c\
+ft_pa_half.c             order_1.c                sort_small_stack_utils.c\
+ft_pb_half.c             order_2.c                stack_utils.c
 PUSH_SWAP_OBJS	:= $(PUSH_SWAP_SRCS:%.c=%.o)
 PUSH_SWAP_SRCS	:= $(addprefix $(PUSH_SWAP_DIR)/, $(PUSH_SWAP_SRCS))
 PUSH_SWAP_OBJS	:= $(addprefix $(PUSH_SWAP_DIR)/out/, $(PUSH_SWAP_OBJS))

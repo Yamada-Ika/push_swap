@@ -10,35 +10,38 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
+
 #include "order.h"
 #include "sort_utils.h"
 
-static void	ft_join_a_helper(t_stack *a, t_stack *b, int min_val, int size)
+static void	ft_join_a_helper(t_push_swap *psw, int min_val, int size)
 {
 	int	j;
 
 	j = 0;
-	while (j < size && ft_is_val_in_stack(b, min_val))
+	while (j < size && ft_is_val_in_stack(psw->b, min_val))
 	{
-		if (min_val == b->back->val)
+		if (min_val == psw->b->back->val)
 		{
-			ft_pa(a, b);
+			ft_pa(psw->a, psw->b, psw->order_list);
 			break ;
 		}
-		if (a->back->val > b->back->val)
+		if (psw->a->back->val > psw->b->back->val)
 		{
-			ft_pa(a, b);
+			ft_pa(psw->a, psw->b, psw->order_list);
 			size--;
 		}
 		else
 		{
-			ft_rb(b);
+			ft_rb(psw->b, psw->order_list);
 			j++;
 		}
 	}
 }
 
-static void	ft_join_a(t_stack *a, t_stack *b, int min_val, int size)
+// static void	ft_join_a(t_stack *a, t_stack *b, int min_val, int size)
+static void	ft_join_a(t_push_swap *psw, int min_val, int size)
 {
 	int	tmp_size;
 	int	next_min_val;
@@ -47,24 +50,26 @@ static void	ft_join_a(t_stack *a, t_stack *b, int min_val, int size)
 	while (size-- > 0)
 	{
 		next_min_val = min_val + 1;
-		ft_join_a_helper(a, b, min_val, tmp_size);
+		ft_join_a_helper(psw, min_val, tmp_size);
 		min_val = next_min_val;
-		ft_ra(a);
+		ft_ra(psw->a, psw->order_list);
 	}
 }
 
-static void	ft_move_to_b(t_stack *a, t_stack *b, int pa_cnt)
+// static void	ft_move_to_b(t_stack *a, t_stack *b, int pa_cnt)
+static void	ft_move_to_b(t_push_swap *psw, int pa_cnt)
 {
 	while (pa_cnt-- > 0)
 	{
-		if (!ft_is_sentinel(a) && a->back->val + 1 == a->front->val)
-			ft_ra(a);
+		if (!ft_is_sentinel(psw->a) && psw->a->back->val + 1 == psw->a->front->val)
+			ft_ra(psw->a, psw->order_list);
 		else
-			ft_pb(a, b);
+			ft_pb(psw->a, psw->b, psw->order_list);
 	}
 }
 
-static int	ft_pa_half_helper(t_stack *a, t_stack *b, int *min_val, int max_val)
+// static int	ft_pa_half_helper(t_stack *a, t_stack *b, int *min_val, int max_val)
+static int	ft_pa_half_helper(t_push_swap *psw, int *min_val, int max_val)
 {
 	int	pivot;
 	int	pa_cnt;
@@ -75,24 +80,25 @@ static int	ft_pa_half_helper(t_stack *a, t_stack *b, int *min_val, int max_val)
 	pivot = (max_val - *min_val) / 2 + *min_val;
 	while (b_size-- > 0)
 	{
-		if (b->back->val == *min_val)
+		if (psw->b->back->val == *min_val)
 		{
-			ft_pa(a, b);
-			ft_ra(a);
+			ft_pa(psw->a, psw->b, psw->order_list);
+			ft_ra(psw->a, psw->order_list);
 			(*min_val)++;
 		}
-		else if (b->back->val > pivot)
+		else if (psw->b->back->val > pivot)
 		{
-			ft_pa(a, b);
+			ft_pa(psw->a, psw->b, psw->order_list);
 			pa_cnt++;
 		}
 		else
-			ft_rb(b);
+			ft_rb(psw->b, psw->order_list);
 	}
 	return (pa_cnt);
 }
 
-void	ft_pa_half(t_stack *a, t_stack *b, int min_val, int max_val)
+// void	ft_pa_half(t_stack *a, t_stack *b, int min_val, int max_val)
+void	ft_pa_half(t_push_swap *psw, int min_val, int max_val)
 {
 	int	pa_cnt;
 	int	pivot;
@@ -100,11 +106,11 @@ void	ft_pa_half(t_stack *a, t_stack *b, int min_val, int max_val)
 
 	b_size = max_val - min_val + 1;
 	if (b_size <= 20)
-		return (ft_join_a(a, b, min_val, b_size));
+		return (ft_join_a(psw, min_val, b_size));
 	pa_cnt = 0;
 	pivot = (max_val - min_val) / 2 + min_val;
-	pa_cnt = ft_pa_half_helper(a, b, &min_val, max_val);
-	ft_pa_half(a, b, min_val, pivot);
-	ft_move_to_b(a, b, pa_cnt);
-	ft_pa_half(a, b, pivot + 1, max_val);
+	pa_cnt = ft_pa_half_helper(psw, &min_val, max_val);
+	ft_pa_half(psw, min_val, pivot);
+	ft_move_to_b(psw, pa_cnt);
+	ft_pa_half(psw, pivot + 1, max_val);
 }

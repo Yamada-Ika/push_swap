@@ -6,7 +6,7 @@
 /*   By: iyamada <iyamada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 04:08:22 by iyamada           #+#    #+#             */
-/*   Updated: 2022/01/08 12:54:16 by iyamada          ###   ########.fr       */
+/*   Updated: 2022/02/12 04:36:20 by iyamada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdbool.h>
 # include "stack.h"
 
-void	ft_pb_min_val(t_stack *a, t_stack *b);
+// void	ft_pb_min_val(t_stack *a, t_stack *b);
 t_stack	*ft_pop_bilist(t_stack *bilist);
 t_stack	*ft_get_element_at_index(t_stack *stack, int index);
 bool	ft_is_sentinel(t_stack *bilist);
